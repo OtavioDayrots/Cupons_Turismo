@@ -1,0 +1,341 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* --- Topo Rosa --- */
+.top-banner {
+    background-color: #ff6b81;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-white {
+    background: white;
+    color: #ff6b81;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* --- Cabeçalho Principal --- */
+header {
+    background-color: #228B22;
+    /* Vermelho Cuponeria */
+    padding: 15px 0;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-area {
+    flex-grow: 1;
+    margin: 0 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.location-btn {
+    background-color: #f1c40f;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.account-btn {
+    background-color: #00c634;
+    /* Verde conta */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.user-actions {
+    display: flex;
+    gap: 15px;
+    /* AQUI É O TAMANHO DO ESPAÇO ENTRE OS BOTÕES */
+    align-items: center;
+}
+
+/* --- Navegação --- */
+nav {
+    background: white;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-item {
+    color: #666;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+/* --- Hero Section (Destaque) --- */
+.hero {
+    background: #b8c4cc;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.hero-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.hero-img {
+    max-width: 300px;
+}
+
+.hero-content {
+    text-align: left;
+}
+
+.hero h1 {
+    color: #d32f2f;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.btn-chrome {
+    background-color: #00c634;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.btn-chrome:hover {
+    transform: scale(1.02);
+}
+
+/* --- Grid de Marcas --- */
+.brands-section {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.brands-grid {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    /* Permite rolar se a tela for pequena */
+    padding-bottom: 20px;
+}
+
+.brand-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    min-width: 140px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.discount-badge {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: #ff002b;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.brand-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #eee;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Cores simuladas para as marcas */
+.brand-m {
+    border: 2px solid #e91e63;
+    color: #e91e63;
+}
+
+.brand-r {
+    border: 2px solid #d32f2f;
+    color: #d32f2f;
+}
+
+.brand-c {
+    border: 2px solid #1976d2;
+    color: #1976d2;
+}
+
+.brand-info {
+    font-size: 12px;
+    color: #888;
+}
+
+.cashback-text {
+    color: #00c634;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* --- Estilos do Cadastro --- */
+.container-cadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Ocupa altura da tela */
+    padding: 20px;
+}
+
+.card-cadastro {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.card-cadastro h2 {
+    color: #228B22;
+    margin-bottom: 10px;
+}
+
+.card-cadastro p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #228B22;
+}
+
+.btn-cadastrar {
+    width: 100%;
+    background-color: #228B22;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.btn-cadastrar:hover {
+    background-color: #1e7a1e;
+}
+/* --------------------------------------- */
