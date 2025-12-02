@@ -45,4 +45,42 @@ class Usuario {
 
         return false;
     }
+
+    // LISTAR TODOS (READ)
+    public static function listarTodos() {
+        $conn = Database::conectar();
+        $sql = "SELECT * FROM usuarios ORDER BY id DESC";
+        $stmt = $conn->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    // BUSCAR POR ID (Para edição)
+    public static function buscarPorId($id) {
+        $conn = Database::conectar();
+        $sql = "SELECT * FROM usuarios WHERE id = :id";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+    // ATUALIZAR (UPDATE - Sem alterar senha)
+    public static function atualizar($id, $nome, $email, $nivel) {
+        $conn = Database::conectar();
+        $sql = "UPDATE usuarios SET nome = :nome, email = :email, nivel = :nivel WHERE id = :id";
+        $stmt = $conn->prepare($sql);
+        return $stmt->execute([
+            ':id' => $id,
+            ':nome' => $nome,
+            ':email' => $email,
+            ':nivel' => $nivel
+        ]);
+    }
+
+    // DELETAR (DELETE)
+    public static function deletar($id) {
+        $conn = Database::conectar();
+        $sql = "DELETE FROM usuarios WHERE id = :id";
+        $stmt = $conn->prepare($sql);
+        return $stmt->execute([':id' => $id]);
+    }
 }

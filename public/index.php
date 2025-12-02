@@ -80,4 +80,25 @@ switch ($pagina) {
         $controller = new AdminController();
         $controller->update(); // Salva no banco
         break;
+
+    // --- ROTAS DE USUÁRIOS (ADMIN) ---
+    case 'admin-users':
+        $controller = new AdminController();
+        $controller->usuarios();
+        break;
+
+    case 'admin-user-edit':
+        $controller = new AdminController();
+        $controller->editUser();
+        break;
+
+    case 'admin-user-update':
+        $controller = new AdminController();
+        $controller->updateUser();
+        break;
+
+    case 'admin-user-delete':
+        $controller = new AdminController();
+        $controller->deleteUser();
+        break;
 }

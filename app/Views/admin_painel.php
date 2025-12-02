@@ -19,6 +19,11 @@
     <header>
         <div class="header-container">
             <div class="logo">Admin CupomTur</div>
+            <div style="margin-top: 10px;">
+                <a href="index.php?page=admin-users" class="account-btn" style="background: #2c3e50; color: white;">
+                    <i class="fas fa-users"></i> Gerenciar Usuários
+                </a>
+            </div>
             <div class="user-actions">
                 <a href="index.php?page=home" class="account-btn"><i class="fas fa-home"></i> Voltar ao Site</a>
             </div>
