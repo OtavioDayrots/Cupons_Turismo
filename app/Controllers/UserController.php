@@ -36,17 +36,17 @@ class UserController {
         $usuario = Usuario::logar($email, $senha);
 
         if ($usuario) {
-            // SUCESSO!
-            // Guardamos os dados na "mochila" da sessão
+            // Guardamos os dados na sessão
             $_SESSION['usuario_id'] = $usuario['id'];
             $_SESSION['usuario_nome'] = $usuario['nome'];
             $_SESSION['usuario_email'] = $usuario['email'];
+            
+            // --- NOVO: Guardamos o nível de acesso ---
+            $_SESSION['usuario_nivel'] = $usuario['nivel']; 
 
-            // Redireciona para a home
             header('Location: index.php?page=home');
             exit;
         } else {
-            // ERRO
             echo "<script>alert('E-mail ou senha incorretos!'); window.history.back();</script>";
         }
     }

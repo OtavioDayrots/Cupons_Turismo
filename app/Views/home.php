@@ -27,6 +27,13 @@
                         <span>Olá, <?= $_SESSION['usuario_nome'] ?>!</span>
                     </div>
 
+                    <?php if (isset($_SESSION['usuario_nivel']) && $_SESSION['usuario_nivel'] == 'admin'): ?>
+                        <a href="index.php?page=admin" class="account-btn" style="background-color: #333;   border: 1px solid white;">
+                            <i class="fas fa-cog"></i>
+                            <div><div style="font-size: 10px;">Painel Admin</div></div>
+                        </a>
+                    <?php endif; ?>
+
                     <a href="index.php?page=meus-cupons" class="account-btn" style="background-color: #f1c40f; color: #333;">
                         <i class="fas fa-ticket-alt"></i>
                         <div><div style="font-size: 10px;">Meus Cupons</div></div>

@@ -5,8 +5,9 @@ class AdminController {
 
     // Verifica se o usuário é admin (ou se está logado)
     private function verificarAcesso() {
-        if (!isset($_SESSION['usuario_id'])) {
-            header('Location: index.php?page=login');
+        // Se não tá logado OU se o nível não é admin, chuta pra fora
+        if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_nivel'] !== 'admin') {
+            header('Location: index.php?page=home');
             exit;
         }
     }

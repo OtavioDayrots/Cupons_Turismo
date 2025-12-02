@@ -27,4 +27,11 @@ INSERT INTO cupons (nome, imagem, quantidade) VALUES
 ('Hotel Plaza', 'img/hotel.png', 5),
 ('Pousada Paraíso', 'img/paraiso.png', 8);
 
--- http://localhost/clone-cuponeria/public/index.php?page=admin
+-- http://localhost/cupons_turismo/public/index.php?page=admin
+
+-- Adiciona a coluna de nível (padrão é 'usuario')
+ALTER TABLE usuarios ADD COLUMN nivel VARCHAR(20) DEFAULT 'usuario';
+
+-- IMPORTANTE: Transforme o SEU usuário em admin
+-- (Troque pelo seu e-mail real abaixo)
+UPDATE usuarios SET nivel = 'admin' WHERE email = 'teste@gmail.com';
