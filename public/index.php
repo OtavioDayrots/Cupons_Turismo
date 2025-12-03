@@ -1,8 +1,7 @@
 <?php
+require_once __DIR__ . '/../app/Controllers/EmpresaController.php';
 require_once __DIR__ . '/../app/Controllers/AdminController.php';
 session_start();
-
-
 
 define('BASE_URL', 'http://localhost/Cupons_Turismo/public/');
 
@@ -105,5 +104,21 @@ switch ($pagina) {
     case 'resgatar':
         $controller = new UserController();
         $controller->resgatar(); // Vai pegar o ID da URL e gerar o cupom
+        break;
+
+    // --- ROTAS DA EMPRESA ---
+    case 'empresa-painel':
+        $controller = new EmpresaController();
+        $controller->index();
+        break;
+
+    case 'empresa-store':
+        $controller = new EmpresaController();
+        $controller->store();
+        break;
+
+    case 'empresa-delete':
+        $controller = new EmpresaController();
+        $controller->delete();
         break;
 }

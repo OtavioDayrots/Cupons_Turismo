@@ -29,13 +29,10 @@
                         <span>Olá, <?= $_SESSION['usuario_nome'] ?>!</span>
                     </div>
 
-                    <?php if (isset($_SESSION['usuario_nivel']) && $_SESSION['usuario_nivel'] == 'admin'): ?>
-                        <a href="index.php?page=admin" class="account-btn"
-                            style="background-color: #333;   border: 1px solid white;">
-                            <i class="fas fa-cog"></i>
-                            <div>
-                                <div style="font-size: 10px;">Painel Admin</div>
-                            </div>
+                    <?php if (isset($_SESSION['usuario_nivel']) && $_SESSION['usuario_nivel'] == 'empresa'): ?>
+                        <a href="index.php?page=empresa-painel" class="account-btn" style="background-color: #2c3e50; border: 1px solid white;">
+                            <i class="fas fa-store"></i>
+                            <div><div style="font-size: 10px;">Área da Empresa</div></div>
                         </a>
                     <?php endif; ?>
 

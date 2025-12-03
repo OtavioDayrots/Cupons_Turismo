@@ -27,7 +27,7 @@ class AdminController {
         $imagem = $_POST['imagem']; // Por enquanto vamos digitar o caminho (ex: img/hotel.png)
         $quantidade = $_POST['quantidade'];
 
-        Cupom::criar($nome, $imagem, $quantidade);
+        Cupom::criar($nome, $imagem, $quantidade, $_SESSION['usuario_id']);
         
         header('Location: index.php?page=admin');
     }
