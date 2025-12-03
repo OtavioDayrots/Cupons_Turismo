@@ -30,9 +30,12 @@
                     </div>
 
                     <?php if (isset($_SESSION['usuario_nivel']) && $_SESSION['usuario_nivel'] == 'empresa'): ?>
-                        <a href="index.php?page=empresa-painel" class="account-btn" style="background-color: #2c3e50; border: 1px solid white;">
+                        <a href="index.php?page=empresa-painel" class="account-btn"
+                            style="background-color: #2c3e50; border: 1px solid white;">
                             <i class="fas fa-store"></i>
-                            <div><div style="font-size: 10px;">Área da Empresa</div></div>
+                            <div>
+                                <div style="font-size: 10px;">Área da Empresa</div>
+                            </div>
                         </a>
                     <?php endif; ?>
 
@@ -80,22 +83,44 @@
         <div class="brands-grid">
 
             <?php foreach ($cupons as $cupom): ?>
-                <div class="brand-card">
-                    <img src="<?= $cupom->imagem ?>" alt="<?= $cupom->nome ?>" width="150px">
+                <div class="brand-card" style="position: relative;">
+                    <div class="discount-badge">
+                        <?= $cupom->desconto ?>
+                    </div>
+                </div>>
+                <img src="<?= $cupom->imagem ?>" alt="<?= $cupom->nome ?>" width="150px">
+
+                <?php if ($cupom->quantidade == 0): ?>
+                    <div class="brand-info" style="color: red; font-weight: bold;">ESGOTADO</div>
+                <?php else: ?>
                     <div class="brand-info"><?= $cupom->quantidade ?> cupons disponíveis</div>
+                <?php endif; ?>
+
+
+                <?php if ($cupom->quantidade > 0): ?>
+
                     <?php if (isset($_SESSION['usuario_id'])): ?>
                         <a href="index.php?page=resgatar&id=<?= $cupom->id ?>" class="btn-chrome"
-                            style="text-decoration: none; font-size: 14px; padding: 10px 20px;">
+                            style="text-decoration: none; font-size: 14px;">
                             Pegar Cupom
                         </a>
                     <?php else: ?>
                         <a href="index.php?page=login" class="btn-chrome"
-                            style="background:#ccc; text-decoration: none; font-size: 14px; padding: 10px 20px;">
+                            style="background:#ccc; text-decoration: none; font-size: 14px;">
                             Entre para Pegar
                         </a>
                     <?php endif; ?>
-                </div>
-            <?php endforeach; ?>
+
+                <?php else: ?>
+
+                    <button class="btn-chrome" style="background: #e74c3c; cursor: not-allowed; opacity: 0.7;" disabled>
+                        Esgotado
+                    </button>
+
+                <?php endif; ?>
+
+            </div>
+        <?php endforeach; ?>
 
         </div>
     </section>

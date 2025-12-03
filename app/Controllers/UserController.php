@@ -57,36 +57,44 @@ class UserController {
     // --- CUPONS E RESGATE (QR CODE) ---
 
     public function resgatar() {
-        // 1. Verifica se está logado
+        // 1. Verifica login
         if (!isset($_SESSION['usuario_id'])) {
             header('Location: index.php?page=login');
             exit;
         }
 
         $usuario_id = $_SESSION['usuario_id'];
-        
-        // Verifica se o ID veio na URL
-        if (!isset($_GET['id'])) {
-            header('Location: index.php?page=home');
+        $cupom_id = $_GET['id'];
+
+        // --- NOVO: VERIFICA ESTOQUE ANTES DE TUDO ---
+        // Precisamos buscar o cupom para ver a quantidade atual
+        require_once __DIR__ . '/../Models/Cupom.php'; // Garante que o Model Cupom está carregado
+        $cupom = Cupom::buscarPorId($cupom_id);
+
+        if ($cupom->quantidade <= 0) {
+            echo "<script>alert('Poxa! Esse cupom acabou de esgotar.'); window.location='index.php?page=home';</script>";
             exit;
         }
-        $cupom_id = $_GET['id']; 
 
-        // 2. (Opcional) Verifica se já não pegou esse cupom antes
-        // Se quiser permitir pegar vários, remova este bloco IF
+        // 2. Verifica se já pegou (opcional)
         if (Resgate::jaResgatou($usuario_id, $cupom_id)) {
             echo "<script>alert('Você já pegou esse cupom!'); window.location='index.php?page=meus-cupons';</script>";
             exit;
         }
 
-        // 3. Gerar Código Aleatório (Ex: #CUP-8X2A)
+        // 3. Gera código e Salva o Resgate
         $codigo = "#CUP-" . strtoupper(substr(md5(uniqid()), 0, 5));
+        
+        if (Resgate::salvar($usuario_id, $cupom_id, $codigo)) {
+            
+            // --- NOVO: DIMINUI O ESTOQUE AGORA ---
+            Cupom::decrementarEstoque($cupom_id);
 
-        // 4. Salvar no Banco
-        Resgate::salvar($usuario_id, $cupom_id, $codigo);
-
-        // 5. Redirecionar para a página de cupons
-        header('Location: index.php?page=meus-cupons');
+            // Sucesso
+            header('Location: index.php?page=meus-cupons');
+        } else {
+            echo "Erro ao resgatar.";
+        }
     }
 
     public function painel() {

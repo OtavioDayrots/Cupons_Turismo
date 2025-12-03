@@ -27,9 +27,11 @@ class EmpresaController {
         $nome = $_POST['nome'];
         $imagem = $_POST['imagem'];
         $quantidade = $_POST['quantidade'];
-        $usuario_id = $_SESSION['usuario_id']; // Pega o ID da empresa logada
+        $desconto = $_POST['desconto']; // <--- Pega do form
+        $usuario_id = $_SESSION['usuario_id'];
 
-        Cupom::criar($nome, $imagem, $quantidade, $usuario_id);
+        // Passa o desconto para o model
+        Cupom::criar($nome, $imagem, $quantidade, $usuario_id, $desconto);
         
         header('Location: index.php?page=empresa-painel');
     }

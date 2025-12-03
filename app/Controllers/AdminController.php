@@ -24,10 +24,12 @@ class AdminController {
         $this->verificarAcesso();
         
         $nome = $_POST['nome'];
-        $imagem = $_POST['imagem']; // Por enquanto vamos digitar o caminho (ex: img/hotel.png)
+        $imagem = $_POST['imagem'];
         $quantidade = $_POST['quantidade'];
+        $desconto = $_POST['desconto']; // <--- Pega do form
 
-        Cupom::criar($nome, $imagem, $quantidade, $_SESSION['usuario_id']);
+        // Passa o desconto para o model
+        Cupom::criar($nome, $imagem, $quantidade, $_SESSION['usuario_id'], $desconto);
         
         header('Location: index.php?page=admin');
     }
@@ -64,10 +66,10 @@ class AdminController {
         $nome = $_POST['nome'];
         $imagem = $_POST['imagem'];
         $quantidade = $_POST['quantidade'];
+        $desconto = $_POST['desconto']; // <--- Pega do form
 
-        Cupom::atualizar($id, $nome, $imagem, $quantidade);
+        Cupom::atualizar($id, $nome, $imagem, $quantidade, $desconto);
         
-        // Volta para o painel
         header('Location: index.php?page=admin');
     }
 

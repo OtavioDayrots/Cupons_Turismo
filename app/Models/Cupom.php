@@ -21,15 +21,17 @@ class Cupom {
     }
 
     // --- ATUALIZADO: CRIAR COM DONO ---
-    public static function criar($nome, $imagem, $quantidade, $usuario_id) {
+    // CRIAR (Adicionado o parametro $desconto)
+    public static function criar($nome, $imagem, $quantidade, $usuario_id, $desconto) {
         $conn = Database::conectar();
-        $sql = "INSERT INTO cupons (nome, imagem, quantidade, usuario_id) VALUES (:nome, :imagem, :quantidade, :uid)";
+        $sql = "INSERT INTO cupons (nome, imagem, quantidade, usuario_id, desconto) VALUES (:nome, :imagem, :quantidade, :uid, :desc)";
         $stmt = $conn->prepare($sql);
         return $stmt->execute([
             ':nome' => $nome,
             ':imagem' => $imagem,
             ':quantidade' => $quantidade,
-            ':uid' => $usuario_id // Salva quem criou
+            ':uid' => $usuario_id,
+            ':desc' => $desconto // <--- Novo campo
         ]);
     }
 
@@ -51,16 +53,27 @@ class Cupom {
     }
 
     // ATUALIZAR
-    public static function atualizar($id, $nome, $imagem, $quantidade) {
+    // ATUALIZAR (Adicionado o parametro $desconto)
+    public static function atualizar($id, $nome, $imagem, $quantidade, $desconto) {
         $conn = Database::conectar();
-        $sql = "UPDATE cupons SET nome = :nome, imagem = :imagem, quantidade = :quantidade WHERE id = :id";
+        $sql = "UPDATE cupons SET nome = :nome, imagem = :imagem, quantidade = :quantidade, desconto = :desc WHERE id = :id";
         $stmt = $conn->prepare($sql);
         return $stmt->execute([
             ':id' => $id,
             ':nome' => $nome,
             ':imagem' => $imagem,
-            ':quantidade' => $quantidade
+            ':quantidade' => $quantidade,
+            ':desc' => $desconto // <--- Novo campo
         ]);
+    }
+
+    // --- NOVO: DIMINUIR ESTOQUE ---
+    public static function decrementarEstoque($id) {
+        $conn = Database::conectar();
+        // Subtrai 1, mas só se a quantidade for maior que 0 (segurança extra)
+        $sql = "UPDATE cupons SET quantidade = quantidade - 1 WHERE id = :id AND quantidade > 0";
+        $stmt = $conn->prepare($sql);
+        return $stmt->execute([':id' => $id]);
     }
 }
 ?>

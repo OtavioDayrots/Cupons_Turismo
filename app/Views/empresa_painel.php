@@ -43,6 +43,7 @@
                 <input type="text" name="nome" placeholder="Título da Oferta (Ex: 50% Off)" required style="flex: 2; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
                 <input type="number" name="quantidade" placeholder="Qtd" required style="width: 80px; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
                 <input type="text" name="imagem" placeholder="Link da Imagem (img/exemplo.png)" required style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <input type="text" name="desconto" placeholder="% Off (ex: 20%)" required style="width: 100px; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
                 <button type="submit" class="btn-cadastrar" style="margin: 0; width: auto; padding: 0 30px;">Publicar</button>
             </form>
         </div>

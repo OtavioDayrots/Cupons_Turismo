@@ -47,6 +47,10 @@
                                 <img src="<?= $item->imagem ?>" alt="Hotel" width="100px" style="border-radius:50%;">
                                 <div class="brand-info" style="margin-top:5px; font-weight:bold;"><?= $item->nome_hotel ?></div>
 
+                                <div style="color: #ff002b; font-weight: bold; font-size: 24px;">
+                                    <?= isset($item->desconto) ? $item->desconto : 'Promo' ?> OFF
+                                </div>
+
                                 <div style="font-weight: 800; font-size: 18px; margin: 10px 0; color: #333;">
                                     <?= $item->codigo_unico ?>
                                 </div>

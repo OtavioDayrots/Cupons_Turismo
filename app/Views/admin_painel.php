@@ -39,6 +39,7 @@
                 <div class="form-row">
                     <input type="text" name="nome" placeholder="Nome do Local (Ex: Hotel X)" required>
                     <input type="number" name="quantidade" placeholder="Qtd Cupons" required>
+                    <input type="text" name="desconto" placeholder="% Off" required>
                 </div>
                 <div class="form-row">
                     <input type="text" name="imagem" placeholder="Caminho da Imagem (ex: img/karlton.jpg)" required>
