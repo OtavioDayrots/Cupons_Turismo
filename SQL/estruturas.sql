@@ -27,11 +27,34 @@ INSERT INTO cupons (nome, imagem, quantidade) VALUES
 ('Hotel Plaza', 'img/hotel.png', 5),
 ('Pousada Paraíso', 'img/paraiso.png', 8);
 
--- http://localhost/cupons_turismo/public/index.php?page=admin
-
 -- Adiciona a coluna de nível (padrão é 'usuario')
-ALTER TABLE usuarios ADD COLUMN nivel VARCHAR(20) DEFAULT 'usuario';
+-- ALTER TABLE usuarios ADD COLUMN nivel VARCHAR(20) DEFAULT 'usuario';
 
 -- IMPORTANTE: Transforme o SEU usuário em admin
 -- (Troque pelo seu e-mail real abaixo)
-UPDATE usuarios SET nivel = 'admin' WHERE email = 'teste@gmail.com';
+-- UPDATE usuarios SET nivel = 'admin' WHERE email = 'bruno@gmail.com';
+
+-- Tabela para guardar os resgates
+CREATE TABLE IF NOT EXISTS resgates (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    cupom_id INT NOT NULL,
+    codigo_unico VARCHAR(50) NOT NULL,
+    data_resgate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+    FOREIGN KEY (cupom_id) REFERENCES cupons(id)
+);
+
+-- 1. Adiciona a coluna do dono do cupom
+ALTER TABLE cupons ADD COLUMN usuario_id INT;
+
+-- 2. (Opcional) Define que os cupons antigos pertencem ao Admin (ID 1) para não sumirem
+UPDATE cupons SET usuario_id = 1 WHERE usuario_id IS NULL;
+
+-- 3. Vamos criar o nível 'empresa' nos usuários.
+-- Crie um usuário novo no site (ex: "Hotel Plaza", email "plaza@hotel.com")
+-- Depois, rode este comando para transformá-lo em empresa:
+UPDATE usuarios SET nivel = 'empresa' WHERE email = 'plaza@hotel.com';
+
+-- Adiciona a coluna desconto
+ALTER TABLE cupons ADD COLUMN desconto VARCHAR(20) DEFAULT '10%';
