@@ -101,4 +101,9 @@ switch ($pagina) {
         $controller = new AdminController();
         $controller->deleteUser();
         break;
+
+    case 'resgatar':
+        $controller = new UserController();
+        $controller->resgatar(); // Vai pegar o ID da URL e gerar o cupom
+        break;
 }

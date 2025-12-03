@@ -1,34 +1,33 @@
 <?php
 require_once __DIR__ . '/../Models/Usuario.php';
+require_once __DIR__ . '/../Models/Resgate.php'; // Importante para o QR Code funcionar
 
 class UserController {
 
-    // Exibir tela de cadastro
+    // --- CADASTRO ---
+
     public function create() {
         require_once __DIR__ . '/../Views/cadastro.php';
     }
 
-    // SALVAR NO BANCO DE DADOS
     public function store() {
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $senha = $_POST['senha'];
 
         if (Usuario::cadastrar($nome, $email, $senha)) {
-            // Sucesso! Manda para o login
             header('Location: index.php?page=login&msg=sucesso');
         } else {
-            // Erro! Volta para o cadastro
             header('Location: index.php?page=cadastro&erro=email_existe');
         }
     }
 
-    // Exibir tela de login
+    // --- LOGIN ---
+
     public function login() {
         require_once __DIR__ . '/../Views/login.php';
     }
 
-    // PROCESSAR LOGIN
     public function autenticar() {
         $email = $_POST['email'];
         $senha = $_POST['senha'];
@@ -36,12 +35,10 @@ class UserController {
         $usuario = Usuario::logar($email, $senha);
 
         if ($usuario) {
-            // Guardamos os dados na sessão
+            // Salva dados na sessão
             $_SESSION['usuario_id'] = $usuario['id'];
             $_SESSION['usuario_nome'] = $usuario['nome'];
             $_SESSION['usuario_email'] = $usuario['email'];
-            
-            // --- NOVO: Guardamos o nível de acesso ---
             $_SESSION['usuario_nivel'] = $usuario['nivel']; 
 
             header('Location: index.php?page=home');
@@ -51,19 +48,58 @@ class UserController {
         }
     }
 
-    // ADICIONE TAMBÉM A FUNÇÃO DE SAIR (LOGOUT)
     public function logout() {
-        session_destroy(); // Destrói a memória
+        session_destroy();
         header('Location: index.php?page=home');
         exit;
     }
 
-    public function painel() {
-        // Verifica se está logado antes de mostrar
+    // --- CUPONS E RESGATE (QR CODE) ---
+
+    public function resgatar() {
+        // 1. Verifica se está logado
         if (!isset($_SESSION['usuario_id'])) {
             header('Location: index.php?page=login');
             exit;
         }
+
+        $usuario_id = $_SESSION['usuario_id'];
+        
+        // Verifica se o ID veio na URL
+        if (!isset($_GET['id'])) {
+            header('Location: index.php?page=home');
+            exit;
+        }
+        $cupom_id = $_GET['id']; 
+
+        // 2. (Opcional) Verifica se já não pegou esse cupom antes
+        // Se quiser permitir pegar vários, remova este bloco IF
+        if (Resgate::jaResgatou($usuario_id, $cupom_id)) {
+            echo "<script>alert('Você já pegou esse cupom!'); window.location='index.php?page=meus-cupons';</script>";
+            exit;
+        }
+
+        // 3. Gerar Código Aleatório (Ex: #CUP-8X2A)
+        $codigo = "#CUP-" . strtoupper(substr(md5(uniqid()), 0, 5));
+
+        // 4. Salvar no Banco
+        Resgate::salvar($usuario_id, $cupom_id, $codigo);
+
+        // 5. Redirecionar para a página de cupons
+        header('Location: index.php?page=meus-cupons');
+    }
+
+    public function painel() {
+        // Verifica se está logado
+        if (!isset($_SESSION['usuario_id'])) {
+            header('Location: index.php?page=login');
+            exit;
+        }
+        
+        // Busca os resgates reais do banco usando o Model Resgate
+        $meus_cupons = Resgate::listarPorUsuario($_SESSION['usuario_id']);
+        
         require_once __DIR__ . '/../Views/meus_cupons.php';
     }
 }
+?>
