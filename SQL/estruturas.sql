@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS resgates (
 -- 1. Adiciona a coluna do dono do cupom
 ALTER TABLE cupons ADD COLUMN usuario_id INT;
 
+
 -- 2. (Opcional) Define que os cupons antigos pertencem ao Admin (ID 1) para não sumirem
 UPDATE cupons SET usuario_id = 1 WHERE usuario_id IS NULL;
 
