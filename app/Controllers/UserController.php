@@ -102,4 +102,3 @@ class UserController {
         require_once __DIR__ . '/../Views/meus_cupons.php';
     }
 }
-?>
