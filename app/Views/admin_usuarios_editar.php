@@ -28,9 +28,10 @@
                     <option value="admin" <?= $usuario->nivel == 'admin' ? 'selected' : '' ?>>Administrador</option>
                 </select>
             </div>
-
-            <button type="submit" class="btn-cadastrar">Salvar Alterações</button>
-            <a href="index.php?page=admin-users" class="cancel-link">Cancelar</a>
+            <div class="button-container">
+                <button type="submit" class="btn-cadastrar">Salvar Alterações</button>
+                <a href="index.php?page=admin" class="btn-cadastrar">Cancelar</a>
+            </div>
         </form>
     </div>
 </body>

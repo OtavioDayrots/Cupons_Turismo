@@ -27,11 +27,11 @@ CREATE TABLE IF NOT EXISTS cupons (
     desconto VARCHAR(20)
 );
 
--- 5. Insere dados de exemplo
-INSERT INTO cupons (nome, imagem, quantidade) VALUES 
-('Hotel Karlton', 'img/karlton.jpg', 11),
-('Hotel Plaza', 'img/hotel.png', 5),
-('Pousada Paraíso', 'img/paraiso.png', 8);
+-- -- 5. Insere dados de exemplo
+-- INSERT INTO cupons (nome, imagem, quantidade) VALUES 
+-- ('Hotel Karlton', 'img/karlton.jpg', 11),
+-- ('Hotel Plaza', 'img/hotel.png', 5),
+-- ('Pousada Paraíso', 'img/paraiso.png', 8);
 
 -- IMPORTANTE: Transforme o SEU usuário em admin
 -- (Troque pelo seu e-mail real abaixo)

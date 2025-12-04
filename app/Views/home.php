@@ -78,6 +78,30 @@
         <p>Aproveite os melhores descontos da região</p>
     </section>
 
+            
+    <!-- Barra de Pesquisa: Filtro por Cidade e Região -->
+    <form class="search-bar" method="GET" action="index.php">
+        <input type="hidden" name="page" value="home">
+        <input 
+            type="text" 
+            name="cidade" 
+            placeholder="Filtrar por cidade..." 
+            value="<?= isset($_GET['cidade']) ? htmlspecialchars($_GET['cidade']) : '' ?>" 
+        >
+        <input 
+            type="text" 
+            name="regiao" 
+            placeholder="Filtrar por região..." 
+            value="<?= isset($_GET['regiao']) ? htmlspecialchars($_GET['regiao']) : '' ?>"
+        >
+        <button 
+            type="submit" 
+            class="account-btn" 
+        >
+            <i class="fas fa-search"></i> Pesquisar
+        </button>
+    </form>
+
     <!-- GRID DE CUPONS -->
     <section class="brands-section">
         <div class="brands-grid">
