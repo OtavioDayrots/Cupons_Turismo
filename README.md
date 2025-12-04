@@ -42,7 +42,7 @@ Antes de começar, certifique-se de ter instalado:
    C:\xampp\htdocs\Cupons_Turismo
    ```
 
-   Ou se preferir outro local, ajuste a URL base no arquivo `main.php`.
+   Ou se preferir outro local, ajuste a URL base no arquivo `index.php`.
 
 ### Passo 2: Iniciar Servidores
 
@@ -111,7 +111,7 @@ UPDATE usuarios SET nivel = 'admin' WHERE email = 'seu_email@exemplo.com';
 
 ### Ajustar URL Base (se necessário)
 
-Se você instalou o projeto em um caminho diferente, edite o arquivo `main.php`:
+Se você instalou o projeto em um caminho diferente, edite o arquivo `index.php`:
 
 ```php
 // Linha 6
@@ -136,7 +136,7 @@ Cupons_Turismo/
 │   ├── css/
 │   └── img/
 ├── SQL/
-├── main.php
+├── index.php
 ├── .htaccess
 └── README.md
 ```
@@ -159,7 +159,7 @@ http://localhost/Cupons_Turismo/
 ou
 
 ```
-http://localhost/Cupons_Turismo/main.php
+http://localhost/Cupons_Turismo/index.php
 ```
 
 ### Passo 3: Primeiro Acesso
@@ -209,7 +209,7 @@ Cupons_Turismo/
 ├── SQL/                           # Scripts SQL
 │   └── estruturas.sql            # Estrutura do banco
 │
-├── main.php                       # Ponto de entrada principal
+├── index.php                       # Ponto de entrada principal
 ├── .htaccess                      # Configuração Apache
 └── README.md                      # Esta documentação
 ```
@@ -332,7 +332,7 @@ VALUES ('Empresa Teste', 'empresa@teste.com', MD5('123456'), 'empresa');
 
 ### URL Base
 - A URL base está configurada para `http://localhost/Cupons_Turismo/public/`
-- Se usar outro caminho, ajuste em `main.php` linha 6
+- Se usar outro caminho, ajuste em `index.php` linha 6
 
 ## 🐛 Solução de Problemas
 
@@ -352,7 +352,7 @@ VALUES ('Empresa Teste', 'empresa@teste.com', MD5('123456'), 'empresa');
 - ✅ Confirme que todas as pastas existem
 
 ### CSS não carrega
-- ✅ Verifique se a URL base está correta em `main.php`
+- ✅ Verifique se a URL base está correta em `index.php`
 - ✅ Confirme que a pasta `public/css/` existe
 - ✅ Limpe o cache do navegador (Ctrl+F5)
 

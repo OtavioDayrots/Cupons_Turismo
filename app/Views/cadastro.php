@@ -12,12 +12,12 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <a href="main.php?page=home" class="logo-link">
+                <a href="index.php?page=home" class="logo-link">
                     <img src="<?= BASE_URL ?>img/cupturimg.png" width="200px" alt="logo">
                 </a>
             </div>
             <div class="user-actions">
-                <a href="main.php?page=home" class="account-btn">
+                <a href="index.php?page=home" class="account-btn">
                     <i class="fas fa-arrow-left"></i> Voltar
                 </a>
             </div>
@@ -29,7 +29,7 @@
             <h2>Crie sua conta</h2>
             <p>Junte-se a nós para economizar!</p>
             
-            <form action="main.php?page=salvar-usuario" method="POST">
+            <form action="index.php?page=salvar-usuario" method="POST">
                 <div class="form-group">
                     <label>Nome Completo</label>
                     <input type="text" name="nome" placeholder="Seu nome" required>

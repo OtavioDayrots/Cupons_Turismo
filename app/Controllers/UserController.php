@@ -16,9 +16,9 @@ class UserController {
         $senha = $_POST['senha'];
 
         if (Usuario::cadastrar($nome, $email, $senha)) {
-            header('Location: main.php?page=login&msg=sucesso');
+            header('Location: index.php?page=login&msg=sucesso');
         } else {
-            header('Location: main.php?page=cadastro&erro=email_existe');
+            header('Location: index.php?page=cadastro&erro=email_existe');
         }
     }
 
@@ -41,7 +41,7 @@ class UserController {
             $_SESSION['usuario_email'] = $usuario['email'];
             $_SESSION['usuario_nivel'] = $usuario['nivel']; 
 
-            header('Location: main.php?page=home');
+            header('Location: index.php?page=home');
             exit;
         } else {
             echo "<script>alert('E-mail ou senha incorretos!'); window.history.back();</script>";
@@ -50,7 +50,7 @@ class UserController {
 
     public function logout() {
         session_destroy();
-        header('Location: main.php?page=home');
+        header('Location: index.php?page=home');
         exit;
     }
 
@@ -59,26 +59,36 @@ class UserController {
     public function resgatar() {
         // 1. Verifica login
         if (!isset($_SESSION['usuario_id'])) {
-            header('Location: main.php?page=login');
+            header('Location: index.php?page=login');
             exit;
         }
 
         $usuario_id = $_SESSION['usuario_id'];
-        $cupom_id = $_GET['id'];
+        $cupom_id = isset($_GET['id']) ? $_GET['id'] : null;
+
+        if (!$cupom_id) {
+            echo "<script>alert('Cupom não encontrado!'); window.location='index.php?page=home';</script>";
+            exit;
+        }
 
         // --- NOVO: VERIFICA ESTOQUE ANTES DE TUDO ---
         // Precisamos buscar o cupom para ver a quantidade atual
         require_once __DIR__ . '/../Models/Cupom.php'; // Garante que o Model Cupom está carregado
         $cupom = Cupom::buscarPorId($cupom_id);
 
+        if (!$cupom) {
+            echo "<script>alert('Cupom não encontrado!'); window.location='index.php?page=home';</script>";
+            exit;
+        }
+
         if ($cupom->quantidade <= 0) {
-            echo "<script>alert('Poxa! Esse cupom acabou de esgotar.'); window.location='main.php?page=home';</script>";
+            echo "<script>alert('Poxa! Esse cupom acabou de esgotar.'); window.location='index.php?page=home';</script>";
             exit;
         }
 
         // 2. Verifica se já pegou (opcional)
         if (Resgate::jaResgatou($usuario_id, $cupom_id)) {
-            echo "<script>alert('Você já pegou esse cupom!'); window.location='main.php?page=meus-cupons';</script>";
+            echo "<script>alert('Você já pegou esse cupom!'); window.location='index.php?page=meus-cupons';</script>";
             exit;
         }
 
@@ -91,21 +101,28 @@ class UserController {
             Cupom::decrementarEstoque($cupom_id);
 
             // Sucesso
-            header('Location: main.php?page=meus-cupons');
+            header('Location: index.php?page=meus-cupons');
+            exit;
         } else {
-            echo "Erro ao resgatar.";
+            echo "<script>alert('Erro ao resgatar cupom. Tente novamente.'); window.location='index.php?page=home';</script>";
+            exit;
         }
     }
 
     public function painel() {
         // Verifica se está logado
         if (!isset($_SESSION['usuario_id'])) {
-            header('Location: main.php?page=login');
+            header('Location: index.php?page=login');
             exit;
         }
         
         // Busca os resgates reais do banco usando o Model Resgate
         $meus_cupons = Resgate::listarPorUsuario($_SESSION['usuario_id']);
+        
+        // Garante que $meus_cupons seja um array mesmo se não houver resgates
+        if (!is_array($meus_cupons)) {
+            $meus_cupons = [];
+        }
         
         require_once __DIR__ . '/../Views/meus_cupons.php';
     }

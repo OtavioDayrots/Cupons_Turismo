@@ -12,7 +12,7 @@
         <div class="header-container">
             <div class="logo">Parceiro CupomTur</div>
             <div class="user-actions">
-                <a href="main.php?page=home" class="account-btn">Ir para o Site</a>
+                <a href="index.php?page=home" class="account-btn">Ir para o Site</a>
             </div>
         </div>
     </header>
@@ -32,7 +32,7 @@
 
         <div class="create-offer-area">
             <h4 class="create-offer-title"><i class="fas fa-plus-circle"></i> Criar Nova Oferta</h4>
-            <form action="main.php?page=empresa-store" method="POST" class="create-offer-form">
+            <form action="index.php?page=empresa-store" method="POST" class="create-offer-form">
                 <input type="text" name="nome" placeholder="Título da Oferta (Ex: 50% Off)" required>
                 <input type="number" name="quantidade" placeholder="Qtd" required>
                 <input type="text" name="imagem" placeholder="Link da Imagem (img/exemplo.png)" required>
@@ -62,7 +62,7 @@
                     <td><b><?= $cupom->nome ?></b></td>
                     <td><?= $cupom->quantidade ?> un.</td>
                     <td>
-                        <a href="main.php?page=empresa-delete&id=<?= $cupom->id ?>" 
+                        <a href="index.php?page=empresa-delete&id=<?= $cupom->id ?>" 
                            class="delete-link"
                            onclick="return confirm('Apagar esta oferta?')">
                            <i class="fas fa-trash"></i> Apagar

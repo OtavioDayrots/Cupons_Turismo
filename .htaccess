@@ -1,9 +1,0 @@
-# Define main.php como arquivo padrão
-DirectoryIndex main.php index.php
-
-# Se não encontrar o arquivo, redireciona para main.php
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^$ main.php [L]
-

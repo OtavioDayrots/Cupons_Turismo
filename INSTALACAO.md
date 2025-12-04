@@ -56,7 +56,7 @@ Agora você pode:
 
 ### Se o projeto estiver em outro caminho:
 
-Edite `main.php` linha 6:
+Edite `index.php` linha 6:
 ```php
 define('BASE_URL', 'http://localhost/SEU_CAMINHO/public/');
 ```

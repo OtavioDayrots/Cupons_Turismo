@@ -13,7 +13,7 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <a href="main.php?page=home">
+                <a href="index.php?page=home">
                     <img src="<?= BASE_URL ?>img/cupturimg.png" alt="Cuponeria Logo">
                 </a>
             </div>
@@ -60,11 +60,11 @@
                 <?php else: ?>
                     <!-- NÃO LOGADO (Visitante) -->
                     
-                    <a href="main.php?page=login" class="account-btn">
+                    <a href="index.php?page=login" class="account-btn">
                         <i class="fas fa-sign-in-alt"></i> Entrar
                     </a>
 
-                    <a href="main.php?page=cadastro" class="account-btn btn-cadastrar-white">
+                    <a href="index.php?page=cadastro" class="account-btn btn-cadastrar-white">
                         Cadastrar
                     </a>
 
@@ -98,7 +98,7 @@
                         <?php endif; ?>
 
                         <!-- 2. Imagem do Hotel -->
-                        <img src="<?= $cupom->imagem ?>" alt="<?= $cupom->nome ?>" onerror="this.src='https://via.placeholder.com/250x150?text=Sem+Imagem'">
+                        <img src="<?= BASE_URL . $cupom->imagem ?>" alt="<?= $cupom->nome ?>" onerror="this.src='https://via.placeholder.com/250x150?text=Sem+Imagem'">
 
                         <!-- 3. Conteúdo (Texto) -->
                         <div class="card-content">
@@ -125,11 +125,11 @@
                         <?php if ($is_admin || $is_empresa): ?>
                             
                             <?php if(isset($_SESSION['usuario_id'])): ?>
-                                <a href="main.php?page=resgatar&id=<?= $cupom->id ?>" class="btn-chrome">
+                                <a href="index.php?page=resgatar&id=<?= $cupom->id ?>" class="btn-chrome">
                                     Pegar Cupom
                                 </a>
                             <?php else: ?>
-                                <a href="main.php?page=login" class="btn-chrome btn-entrar-para-pegar">
+                                <a href="index.php?page=login" class="btn-chrome btn-entrar-para-pegar">
                                     Entre para Pegar
                                 </a>
                             <?php endif; ?>

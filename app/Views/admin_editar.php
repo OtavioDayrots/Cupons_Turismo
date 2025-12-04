@@ -19,7 +19,7 @@
     <div class="container-editar">
         <h2>Editar Cupom #<?= $cupom->id ?></h2>
 
-        <form action="main.php?page=admin-update" method="POST">
+        <form action="index.php?page=admin-update" method="POST">
             <input type="hidden" name="id" value="<?= $cupom->id ?>">
 
             <div class="form-group">
@@ -44,7 +44,7 @@
 
             <div class="button-container">
                 <button type="submit" class="btn-cadastrar">Salvar Alterações</button>
-                <a href="main.php?page=admin" class="btn-cadastrar">Cancelar</a>
+                <a href="index.php?page=admin" class="btn-cadastrar">Cancelar</a>
             </div>
         </form>
     </div>

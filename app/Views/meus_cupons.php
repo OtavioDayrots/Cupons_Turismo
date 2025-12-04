@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meus Cupons</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>css/global.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>css/meus_cupons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
@@ -14,12 +15,14 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <img src="<?= BASE_URL ?>img/cupturimg.png" width="200px" alt="logo">
+                <a href="index.php?page=home">
+                    <img src="<?= BASE_URL ?>img/cupturimg.png" width="200px" alt="logo">
+                </a>
             </div>
             <div class="user-actions">
                 <span class="header-user-info">Logado como:
                     <b><?= $_SESSION['usuario_nome'] ?></b></span>
-                <a href="main.php?page=home" class="account-btn">
+                <a href="index.php?page=home" class="account-btn">
                     <i class="fas fa-arrow-left"></i> Voltar para Ofertas
                 </a>
             </div>
@@ -43,7 +46,7 @@
                                     RESGATADO EM <?= date('d/m/Y', strtotime($item->data_resgate)) ?>
                                 </div>
 
-                                <img src="<?= $item->imagem ?>" alt="Hotel" width="100px" class="cupom-img-rounded">
+                                <img src="<?= BASE_URL . $item->imagem ?>" alt="Hotel" width="100px" class="cupom-img-rounded" onerror="this.src='https://via.placeholder.com/100x100?text=Sem+Imagem'">
                                 <div class="brand-info cupom-hotel-name"><?= $item->nome_hotel ?></div>
 
                                 <div class="cupom-desconto">
@@ -64,7 +67,7 @@
                     <?php else: ?>
                         <div class="empty-cupons-message">
                             <h3>Você ainda não tem cupons 😢</h3>
-                            <a href="main.php?page=home" class="btn-cadastrar">Ver
+                            <a href="index.php?page=home" class="btn-cadastrar">Ver
                                 Ofertas</a>
                         </div>
                     <?php endif; ?>

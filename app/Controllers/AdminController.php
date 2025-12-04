@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../Models/Cupom.php';
+require_once __DIR__ . '/../Models/Usuario.php';
 
 class AdminController {
 
@@ -7,7 +8,7 @@ class AdminController {
     private function verificarAcesso() {
         // Se não tá logado OU se o nível não é admin, chuta pra fora
         if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_nivel'] !== 'admin') {
-            header('Location: main.php?page=home');
+            header('Location: index.php?page=home');
             exit;
         }
     }
@@ -31,7 +32,8 @@ class AdminController {
         // Passa o desconto para o model
         Cupom::criar($nome, $imagem, $quantidade, $_SESSION['usuario_id'], $desconto);
         
-        header('Location: main.php?page=admin');
+        header('Location: index.php?page=admin');
+        exit;
     }
 
     // Deleta um cupom
@@ -42,7 +44,8 @@ class AdminController {
             Cupom::deletar($_GET['id']);
         }
         
-        header('Location: main.php?page=admin');
+        header('Location: index.php?page=admin');
+        exit;
     }
 
     // Tela de Edição
@@ -54,7 +57,8 @@ class AdminController {
             $cupom = Cupom::buscarPorId($_GET['id']);
             require_once __DIR__ . '/../Views/admin_editar.php';
         } else {
-            header('Location: main.php?page=admin');
+            header('Location: index.php?page=admin');
+            exit;
         }
     }
 
@@ -70,7 +74,8 @@ class AdminController {
 
         Cupom::atualizar($id, $nome, $imagem, $quantidade, $desconto);
         
-        header('Location: main.php?page=admin');
+        header('Location: index.php?page=admin');
+        exit;
     }
 
     // --- GESTÃO DE USUÁRIOS ---
@@ -87,7 +92,15 @@ class AdminController {
         $this->verificarAcesso();
         if (isset($_GET['id'])) {
             $usuario = Usuario::buscarPorId($_GET['id']);
-            require_once __DIR__ . '/../Views/admin_usuarios_editar.php';
+            if ($usuario) {
+                require_once __DIR__ . '/../Views/admin_usuarios_editar.php';
+            } else {
+                header('Location: index.php?page=admin-users');
+                exit;
+            }
+        } else {
+            header('Location: index.php?page=admin-users');
+            exit;
         }
     }
 
@@ -101,7 +114,8 @@ class AdminController {
         $nivel = $_POST['nivel']; // Aqui definimos se é admin ou usuario
 
         Usuario::atualizar($id, $nome, $email, $nivel);
-        header('Location: main.php?page=admin-users');
+        header('Location: index.php?page=admin-users');
+        exit;
     }
 
     // Deletar Usuário
@@ -117,6 +131,7 @@ class AdminController {
         }
 
         Usuario::deletar($id);
-        header('Location: main.php?page=admin-users');
+        header('Location: index.php?page=admin-users');
+        exit;
     }
 }

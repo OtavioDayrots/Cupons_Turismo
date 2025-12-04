@@ -12,12 +12,12 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <a href="main.php?page=home">
+                <a href="index.php?page=home">
                     <img src="<?= BASE_URL ?>img/cupturimg.png" width="200px" alt="logo">
                 </a>
             </div>
             <div class="user-actions">
-                <a href="main.php?page=home" class="account-btn">
+                <a href="index.php?page=home" class="account-btn">
                     <i class="fas fa-arrow-left"></i> Voltar
                 </a>
             </div>
@@ -29,7 +29,7 @@
             <h2>Bem-vindo de volta!</h2>
             <p>Acesse sua conta para ver seus cupons.</p>
             
-            <form action="main.php?page=fazer-login" method="POST">
+            <form action="index.php?page=fazer-login" method="POST">
                 <div class="form-group">
                     <label>E-mail</label>
                     <input type="email" name="email" placeholder="seu@email.com" required>
@@ -44,7 +44,7 @@
             </form>
 
             <div class="auth-link">
-                Ainda não tem conta? <a href="main.php?page=cadastro">Cadastre-se</a>
+                Ainda não tem conta? <a href="index.php?page=cadastro">Cadastre-se</a>
             </div>
         </div>
     </div>

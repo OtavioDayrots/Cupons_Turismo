@@ -11,7 +11,7 @@
        │
        ▼
 ┌─────────────┐
-│  main.php   │ ← Roteamento
+│  index.php   │ ← Roteamento
 └──────┬──────┘
        │
        ├──► Controllers/  ← Lógica de Negócio
@@ -58,7 +58,7 @@
 
 ### 1. Acesso à Home
 ```
-Browser → main.php?page=home
+Browser → index.php?page=home
        → HomeController::index()
        → Cupom::listarTodos()
        → View: home.php
@@ -66,7 +66,7 @@ Browser → main.php?page=home
 
 ### 2. Resgate de Cupom
 ```
-Browser → main.php?page=resgatar&id=X
+Browser → index.php?page=resgatar&id=X
        → UserController::resgatar()
        → Verifica estoque
        → Gera código único
@@ -76,7 +76,7 @@ Browser → main.php?page=resgatar&id=X
 
 ### 3. Login
 ```
-Browser → main.php?page=fazer-login
+Browser → index.php?page=fazer-login
        → UserController::autenticar()
        → Usuario::logar()
        → Cria sessão
@@ -89,7 +89,7 @@ Browser → main.php?page=fazer-login
 O sistema usa sessões nativas do PHP para autenticação:
 
 ```php
-// Iniciar sessão (em main.php)
+// Iniciar sessão (em index.php)
 session_start();
 
 // Salvar dados do usuário
@@ -113,7 +113,7 @@ As rotas protegidas verificam a sessão:
 ```php
 // Exemplo em UserController::resgatar()
 if (!isset($_SESSION['usuario_id'])) {
-    header('Location: main.php?page=login');
+    header('Location: index.php?page=login');
     exit;
 }
 ```
@@ -122,7 +122,7 @@ if (!isset($_SESSION['usuario_id'])) {
 
 ### Roteamento Manual (Switch/Case)
 
-O arquivo `main.php` contém todas as rotas:
+O arquivo `index.php` contém todas as rotas:
 
 ```php
 $pagina = isset($_GET['page']) ? $_GET['page'] : 'home';
@@ -279,42 +279,9 @@ Breakpoints principais:
     /* Estilos mobile */
 }
 ```
-
-## 🧪 Testes Recomendados
-
-### Funcionalidades a Testar
-
-1. **Autenticação**
-   - [ ] Cadastro de novo usuário
-   - [ ] Login com credenciais válidas
-   - [ ] Login com credenciais inválidas
-   - [ ] Logout
-
-2. **Cupons**
-   - [ ] Visualizar lista de cupons
-   - [ ] Resgatar cupom disponível
-   - [ ] Tentar resgatar cupom esgotado
-   - [ ] Ver cupons resgatados
-   - [ ] Verificar QR Code gerado
-
-3. **Empresa**
-   - [ ] Criar oferta
-   - [ ] Editar oferta
-   - [ ] Excluir oferta
-   - [ ] Verificar estoque
-
-4. **Admin**
-   - [ ] Criar cupom
-   - [ ] Editar cupom
-   - [ ] Excluir cupom
-   - [ ] Gerenciar usuários
-   - [ ] Alterar níveis de acesso
-
-## 🐛 Debug e Logs
-
 ### Ativar Exibição de Erros
 
-No `main.php`, adicione no início:
+No `index.php`, adicione no início:
 
 ```php
 error_reporting(E_ALL);
@@ -334,20 +301,6 @@ Localização (XAMPP):
 ```
 C:\xampp\mysql\data\mysql_error.log
 ```
-
-## 📈 Melhorias Futuras
-
-- [ ] API REST
-- [ ] Sistema de notificações
-- [ ] Relatórios e estatísticas
-- [ ] Upload de imagens
-- [ ] Validação de cupons por QR Code
-- [ ] Sistema de avaliações
-- [ ] Filtros e busca avançada
-- [ ] Paginação
-- [ ] Cache de consultas
-- [ ] Testes automatizados
-
 ## 📝 Notas de Desenvolvimento
 
 ### Convenções de Código

@@ -41,9 +41,6 @@ switch ($pagina) {
         $controller->autenticar(); // Processa os dados
         break;
         
-    default:
-        echo "Página não encontrada!";
-        break;
     case 'logout':
         $controller = new UserController();
         $controller->logout();
@@ -120,5 +117,9 @@ switch ($pagina) {
     case 'empresa-delete':
         $controller = new EmpresaController();
         $controller->delete();
+        break;
+
+    default:
+        echo "Página não encontrada!";
         break;
 }

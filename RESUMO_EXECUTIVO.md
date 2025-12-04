@@ -34,7 +34,7 @@ Cupons_Turismo/
 │   └── img/           # Imagens
 ├── SQL/
 │   └── estruturas.sql # Script do banco
-└── main.php           # Ponto de entrada
+└── index.php           # Ponto de entrada
 ```
 
 ## 🔑 Credenciais Padrão
@@ -88,7 +88,7 @@ Cupons_Turismo/
 
 **Se o projeto estiver em outro caminho:**
 
-Edite `main.php` linha 6:
+Edite `index.php` linha 6:
 ```php
 define('BASE_URL', 'http://localhost/SEU_CAMINHO/public/');
 ```
@@ -106,7 +106,7 @@ private static $password = 'sua_senha';
 |----------|---------|
 | Página não encontrada | Verificar se Apache está rodando |
 | Erro de conexão | Verificar se MySQL está rodando |
-| CSS não carrega | Verificar URL base em `main.php` |
+| CSS não carrega | Verificar URL base em `index.php` |
 | Imagens não aparecem | Verificar pasta `public/img/` |
 
 ## 📞 Suporte
