@@ -32,8 +32,6 @@
 
             <div class="brands-grid brands-grid-centered">
 
-                <div class="brands-grid brands-grid-centered">
-
                     <?php if (count($meus_cupons) > 0): ?>
 
                         <?php foreach ($meus_cupons as $item): ?>
@@ -43,7 +41,7 @@
                                     RESGATADO EM <?= date('d/m/Y', strtotime($item->data_resgate)) ?>
                                 </div>
 
-                                <img src="<?= $item->imagem ?>" alt="Hotel" width="100px" class="cupom-img-rounded">
+                                <img src="<?= BASE_URL . $item->imagem ?>" alt="Hotel" width="100px" class="cupom-img-rounded">
                                 <div class="brand-info cupom-hotel-name"><?= $item->nome_hotel ?></div>
 
                                 <div class="cupom-desconto">
@@ -68,8 +66,6 @@
                                 Ofertas</a>
                         </div>
                     <?php endif; ?>
-
-                </div>
 
             </div>
         </div>
