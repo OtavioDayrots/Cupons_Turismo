@@ -98,7 +98,13 @@
                         <?php endif; ?>
 
                         <!-- 2. Imagem do Hotel -->
-                        <img src="<?= BASE_URL . $cupom->imagem ?>" alt="<?= $cupom->nome ?>" onerror="this.src='https://via.placeholder.com/250x150?text=Sem+Imagem'">
+                        <?php 
+                            // Se a string começa com http:// ou https:// então é link de imagem
+                            if (preg_match('/^https?:\/\//', $cupom->imagem)) : ?>
+                                <img src="<?= $cupom->imagem ?>" alt="<?= $cupom->nome ?>" onerror="this.src='https://via.placeholder.com/250x150?text=Sem+Imagem'">
+                        <?php else: ?>
+                                <img src="<?= BASE_URL . $cupom->imagem ?>" alt="<?= $cupom->nome ?>" onerror="this.src='https://via.placeholder.com/250x150?text=Sem+Imagem'">
+                        <?php endif; ?>
 
                         <!-- 3. Conteúdo (Texto) -->
                         <div class="card-content">
