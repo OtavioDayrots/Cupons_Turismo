@@ -10,7 +10,7 @@
 
     <header>
         <div class="header-container">
-            <div class="logo">Parceiro Cuponeria</div>
+            <div class="logo">Parceiro CupomTur</div>
             <div class="user-actions">
                 <a href="main.php?page=home" class="account-btn">Ir para o Site</a>
             </div>
