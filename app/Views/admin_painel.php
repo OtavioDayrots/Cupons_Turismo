@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <title>Painel Administrativo</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>css/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
 
     <header>
@@ -24,7 +26,7 @@
 
     <div class="admin-container">
         <h2>Gerenciar Cupons</h2>
-        
+
         <div class="admin-form-area">
             <h4>Adicionar Novo Cupom</h4>
             <form action="index.php?page=admin-store" method="POST">
@@ -53,28 +55,46 @@
             </thead>
             <tbody>
                 <?php foreach ($cupons as $cupom): ?>
-                <tr>
-                    <td><?= $cupom->id ?></td>
-                    <td><img src="<?= BASE_URL . $cupom->imagem ?>" width="40px" class="rounded-img" onerror="this.src='https://via.placeholder.com/40x40?text=Sem+Imagem'"></td>
-                    <td><?= $cupom->nome ?></td>
-                    <td><?= $cupom->quantidade ?></td>
-                    <td>
-                        <a href="index.php?page=admin-edit&id=<?= $cupom->id ?>" 
-                        class="action-link">
-                        <i class="fas fa-edit"></i> Editar
-                        </a>
+                    <tr>
+                        <td><?= $cupom->id ?></td>
+                        <td>
+                            <?php
+                            // Se a string começa com http:// ou https:// então é link de imagem
+                            $img_src = '';
+                            if (!empty($cupom->imagem)) {
+                                if (preg_match('/^https?:\/\//', $cupom->imagem)) {
+                                    $img_src = $cupom->imagem;
+                                } else {
+                                    // Remove barra inicial se presente para evitar duplicação de barras no caminho final
+                                    $img_path = ltrim($cupom->imagem, '/');
+                                    $img_src = BASE_URL . $img_path;
+                                }
+                            } else {
+                                // Imagem ausente (padrão)
+                                $img_src = 'https://via.placeholder.com/50x50?text=Sem+Imagem';
+                            }
+                            ?>
+                            <img src="<?= htmlspecialchars($img_src) ?>" width="50" class="table-img"
+                                onerror="this.src='https://via.placeholder.com/50x50?text=Erro'" alt="Imagem da Oferta">
+                        </td>
+                        <td><?= $cupom->nome ?></td>
+                        <td><?= $cupom->quantidade ?></td>
+                        <td>
+                            <a href="index.php?page=admin-edit&id=<?= $cupom->id ?>" class="action-link">
+                                <i class="fas fa-edit"></i> Editar
+                            </a>
 
-                        <a href="index.php?page=admin-delete&id=<?= $cupom->id ?>" 
-                        class="btn-delete" 
-                        onclick="return confirm('Tem certeza que deseja apagar?')">
-                        <i class="fas fa-trash"></i> Excluir
-                        </a>
-                    </td>
-                </tr>
+                            <a href="index.php?page=admin-delete&id=<?= $cupom->id ?>" class="btn-delete"
+                                onclick="return confirm('Tem certeza que deseja apagar?')">
+                                <i class="fas fa-trash"></i> Excluir
+                            </a>
+                        </td>
+                    </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
     </div>
 
 </body>
+
 </html>

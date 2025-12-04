@@ -35,7 +35,7 @@ INSERT INTO cupons (nome, imagem, quantidade) VALUES
 
 -- IMPORTANTE: Transforme o SEU usuário em admin
 -- (Troque pelo seu e-mail real abaixo)
--- UPDATE usuarios SET nivel = 'admin' WHERE email = 'bruno@gmail.com';
+-- UPDATE usuarios SET nivel = 'admin' WHERE email = 'admin@gmail.com';
 
 -- Tabela para guardar os resgates
 CREATE TABLE IF NOT EXISTS resgates (

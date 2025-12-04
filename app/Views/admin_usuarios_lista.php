@@ -40,6 +40,10 @@
                     <td>
                         <?php if($u->nivel == 'admin'): ?>
                             <span class="badge-admin">ADMIN</span>
+                        <?php elseif($u->nivel == 'empresa'): ?>
+                            <span class="badge-empresa">EMPRESA</span>
+                        <?php elseif($u->nivel == 'usuario'): ?>
+                            <span class="badge-user">USUÁRIO</span>
                         <?php else: ?>
                             <span class="badge-user">USUÁRIO</span>
                         <?php endif; ?>
