@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar - CupomTur</title>
-    <link rel="stylesheet" href="/Cupons_Turismo/public/css/style.css">
+    <title>Cadastrar - Cuponeria Clone</title>
+    <link rel="stylesheet" href="<?= BASE_URL ?>css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -12,8 +12,8 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <a href="index.php?page=home" style="text-decoration:none; color:white;">
-                    <img src="img/cupturimg.png" width="200px" alt="logo">
+                <a href="index.php?page=home">
+                    <img src="img/cupturimg.png" alt="logo">
                 </a>
             </div>
             <div class="user-actions">
@@ -27,27 +27,26 @@
     <div class="container-cadastro">
         <div class="card-cadastro">
             <h2>Crie sua conta</h2>
-            <p>Junte-se a nós para economizar!</p>
+            <p>Escolha seu perfil e comece agora!</p>
             
             <form action="index.php?page=salvar-usuario" method="POST">
                 <div class="form-group">
-                    <label>Nome Completo</label>
+                    <label>Nome Completo (ou Nome da Empresa)</label>
                     <input type="text" name="nome" placeholder="Seu nome" required>
-                </div>
-
-                <div class="form-group">
-                    <label>CPF</label>
-                    <input type="number" name="CPF" placeholder="Seu CPF" required>
                 </div>
 
                 <div class="form-group">
                     <label>E-mail</label>
                     <input type="email" name="email" placeholder="seu@email.com" required>
                 </div>
-
+                
+                <!-- NOVO CAMPO: TIPO DE CONTA -->
                 <div class="form-group">
-                    <label>Celular</label>
-                    <input type="number" name="celular" placeholder="Seu numero de celular" required>
+                    <label>Tipo de Conta</label>
+                    <select name="nivel" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: white;">
+                        <option value="usuario">Sou Cliente (Quero Descontos)</option>
+                        <option value="empresa">Sou Empresa (Quero Anunciar)</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
