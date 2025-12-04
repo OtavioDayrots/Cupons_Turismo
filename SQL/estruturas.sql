@@ -35,14 +35,19 @@ INSERT INTO cupons (nome, imagem, quantidade) VALUES
 -- UPDATE usuarios SET nivel = 'admin' WHERE email = 'bruno@gmail.com';
 
 -- Tabela para guardar os resgates
-CREATE TABLE IF NOT EXISTS resgates (
+CREATE TABLE resgates (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id INT NOT NULL,
+	usuario_id INT NOT NULL,
     cupom_id INT NOT NULL,
-    codigo_unico VARCHAR(50) NOT NULL,
-    data_resgate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	codigo_unico VARCHAR(50) NOT NULL,
+    data_resgate DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
-    FOREIGN KEY (cupom_id) REFERENCES cupons(id)
+
+    CONSTRAINT resgates_ibfk_2
+        FOREIGN KEY (cupom_id)
+        REFERENCES cupons(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 -- 1. Adiciona a coluna do dono do cupom
