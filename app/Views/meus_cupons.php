@@ -45,8 +45,14 @@
                                 <div class="resgate-badge">
                                     RESGATADO EM <?= date('d/m/Y', strtotime($item->data_resgate)) ?>
                                 </div>
+                                <?php 
+                                    // Se a string começa com http:// ou https:// então é link de imagem
+                                    if (preg_match('/^https?:\/\//', subject: $item->imagem)) : ?>
+                                        <img src="<?= $item->imagem ?>" alt="Hotel" width="100px" class="cupom-img-rounded" onerror="this.src='https://via.placeholder.com/250x150?text=Sem+Imagem'">
+                                <?php else: ?>
+                                        <img src="<?= BASE_URL . $item->imagem ?>" alt="Hotel" width="100px" class="cupom-img-rounded" onerror="this.src='https://via.placeholder.com/250x150?text=Sem+Imagem'">
+                                <?php endif; ?>
 
-                                <img src="<?= BASE_URL . $item->imagem ?>" alt="Hotel" width="100px" class="cupom-img-rounded" onerror="this.src='https://via.placeholder.com/100x100?text=Sem+Imagem'">
                                 <div class="brand-info cupom-hotel-name"><?= $item->nome_hotel ?></div>
 
                                 <div class="cupom-desconto">
@@ -57,7 +63,7 @@
                                     <?= $item->codigo_unico ?>
                                 </div>
 
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?= $item->codigo_unico ?>"
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?= urlencode($item->codigo_unico) ?>"
                                     alt="QR Code" width="120px" class="cupom-qrcode">
 
                                 <div class="cupom-instruction">Apresente este código no local</div>

@@ -78,6 +78,30 @@
         <p>Aproveite os melhores descontos da região</p>
     </section>
 
+            
+    <!-- Barra de Pesquisa: Filtro por Cidade e Região -->
+    <form class="search-bar" method="GET" action="index.php">
+        <input type="hidden" name="page" value="home">
+        <input 
+            type="text" 
+            name="cidade" 
+            placeholder="Filtrar por cidade..." 
+            value="<?= isset($_GET['cidade']) ? htmlspecialchars($_GET['cidade']) : '' ?>" 
+        >
+        <input 
+            type="text" 
+            name="regiao" 
+            placeholder="Filtrar por região..." 
+            value="<?= isset($_GET['regiao']) ? htmlspecialchars($_GET['regiao']) : '' ?>"
+        >
+        <button 
+            type="submit" 
+            class="account-btn" 
+        >
+            <i class="fas fa-search"></i> Pesquisar
+        </button>
+    </form>
+
     <!-- GRID DE CUPONS -->
     <section class="brands-section">
         <div class="brands-grid">
@@ -98,7 +122,13 @@
                         <?php endif; ?>
 
                         <!-- 2. Imagem do Hotel -->
-                        <img src="<?= BASE_URL . $cupom->imagem ?>" alt="<?= $cupom->nome ?>" onerror="this.src='https://via.placeholder.com/250x150?text=Sem+Imagem'">
+                        <?php 
+                            // Se a string começa com http:// ou https:// então é link de imagem
+                            if (preg_match('/^https?:\/\//', $cupom->imagem)) : ?>
+                                <img src="<?= $cupom->imagem ?>" alt="<?= $cupom->nome ?>" onerror="this.src='https://via.placeholder.com/250x150?text=Sem+Imagem'">
+                        <?php else: ?>
+                                <img src="<?= BASE_URL . $cupom->imagem ?>" alt="<?= $cupom->nome ?>" onerror="this.src='https://via.placeholder.com/250x150?text=Sem+Imagem'">
+                        <?php endif; ?>
 
                         <!-- 3. Conteúdo (Texto) -->
                         <div class="card-content">
