@@ -16,9 +16,6 @@
                     <img src="img/cupturimg.png" width="200px" alt="logo">
                 </a>
             </div>
-            <div class="search-area">
-                <button class="location-btn"><i class="fas fa-map-marker-alt"></i> Brasil</button>
-            </div>
             <div class="user-actions">
                 <a href="index.php?page=home" class="account-btn">
                     <i class="fas fa-arrow-left"></i> Voltar
