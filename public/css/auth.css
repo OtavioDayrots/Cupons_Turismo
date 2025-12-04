@@ -1,0 +1,93 @@
+/* Estilos melhorados para páginas de autenticação (login e cadastro) */
+
+/* Link de cadastro no login */
+.auth-link {
+    margin-top: 25px;
+    font-size: 15px;
+    text-align: center;
+    color: #666;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.auth-link a {
+    color: #228B22;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.auth-link a:hover {
+    background: rgba(34, 139, 34, 0.1);
+    color: #1e7a1e;
+    transform: translateY(-2px);
+}
+
+/* Link do logo */
+.logo-link {
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
+}
+
+/* Melhorias no card de cadastro/login */
+.card-cadastro .form-group {
+    margin-bottom: 16px;
+}
+
+.card-cadastro .form-group label {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+    font-size: 13px;
+}
+
+.card-cadastro .form-group input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: white;
+    font-family: inherit;
+}
+
+.card-cadastro .form-group input:focus {
+    outline: none;
+    border-color: #228B22;
+    box-shadow: 0 0 0 3px rgba(34, 139, 34, 0.1);
+    transform: translateY(-2px);
+}
+
+.card-cadastro .btn-cadastrar {
+    width: 100%;
+    margin-top: 8px;
+    padding: 12px;
+    font-size: 15px;
+}
+
+/* Animação de entrada */
+.card-cadastro {
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

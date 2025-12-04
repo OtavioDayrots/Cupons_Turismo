@@ -1,0 +1,180 @@
+/* Estilos melhorados para a página Meus Cupons */
+
+/* Header info */
+.header-user-info {
+    color: white;
+    margin-right: 15px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header-user-info b {
+    color: #f1c40f;
+}
+
+/* Container principal */
+.meus-cupons-container {
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Título */
+.meus-cupons-title {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #228B22 0%, #32CD32 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Grid centralizado */
+.brands-grid-centered {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* Card de cupom resgatado */
+.cupom-resgatado-card {
+    border: 3px solid #228B22;
+    width: 240px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.cupom-resgatado-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #228B22, #32CD32);
+}
+
+.cupom-resgatado-card:hover {
+    border-color: #32CD32;
+    box-shadow: 0 15px 35px rgba(34, 139, 34, 0.2);
+}
+
+/* Badge de data de resgate */
+.resgate-badge {
+    background: linear-gradient(135deg, #228B22 0%, #32CD32 100%);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(34, 139, 34, 0.3);
+    text-align: center;
+    width: 100%;
+}
+
+/* Imagem arredondada */
+.cupom-img-rounded {
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    border: 3px solid #228B22;
+}
+
+.cupom-resgatado-card:hover .cupom-img-rounded {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Nome do hotel */
+.cupom-hotel-name {
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+/* Desconto destacado */
+.cupom-desconto {
+    color: #e74c3c;
+    font-weight: 800;
+    font-size: 26px;
+    text-shadow: 0 2px 4px rgba(231, 76, 60, 0.2);
+    margin: 12px 0;
+    letter-spacing: -1px;
+}
+
+/* Código único */
+.cupom-codigo {
+    font-weight: 800;
+    font-size: 16px;
+    margin: 12px 0;
+    color: #2c3e50;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 2px dashed #228B22;
+    letter-spacing: 1.5px;
+    font-family: 'Courier New', monospace;
+}
+
+/* QR Code */
+.cupom-qrcode {
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    background: white;
+    transition: transform 0.3s ease;
+}
+
+.cupom-resgatado-card:hover .cupom-qrcode {
+    transform: scale(1.05);
+}
+
+/* Mensagem de instrução */
+.cupom-instruction {
+    font-size: 12px;
+    color: #666;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Mensagem vazia */
+.empty-cupons-message {
+    text-align: center;
+    padding: 60px 40px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.6s ease;
+}
+
+.empty-cupons-message h3 {
+    color: #2c3e50;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.empty-cupons-message a {
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

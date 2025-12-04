@@ -1,0 +1,413 @@
+/* --- Reset Básico --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Tipografia Moderna --- */
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #333;
+    padding-bottom: 50px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Cabeçalho Moderno --- */
+header {
+    background: linear-gradient(135deg, #228B22 0%, #32CD32 100%);
+    padding: 12px 0;
+    box-shadow: 0 4px 20px rgba(34, 139, 34, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo img {
+    max-width: 140px;
+    display: block;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+.logo a {
+    text-decoration: none;
+}
+
+.user-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* --- Botões do Cabeçalho --- */
+.account-btn {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: white;
+    padding: 7px 14px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    font-size: 12px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.account-btn:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.account-btn:active {
+    transform: translateY(0);
+}
+
+/* --- Botão Principal (Pegar Cupom) --- */
+.btn-chrome {
+    background: linear-gradient(135deg, #00c634 0%, #00a82d 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 198, 52, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-chrome::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-chrome:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-chrome:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 198, 52, 0.5);
+}
+
+.btn-chrome:active {
+    transform: translateY(-1px) scale(1);
+}
+
+.btn-chrome:disabled {
+    background: linear-gradient(135deg, #ccc 0%, #aaa 100%);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-chrome:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* --- GRID DE PRODUTOS --- */
+.brands-section {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.brands-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* --- O CARD Moderno --- */
+.brand-card {
+    background: white;
+    border-radius: 15px;
+    padding: 18px;
+    width: 240px;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+}
+
+.brand-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #228B22, #32CD32);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.brand-card:hover::before {
+    transform: scaleX(1);
+}
+
+.brand-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.brand-card img {
+    width: 100%;
+    height: 130px;
+    object-fit: contain;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.brand-card:hover img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    text-align: center;
+    width: 100%;
+}
+
+.brand-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+}
+
+.brand-info {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.brand-info i {
+    font-size: 16px;
+}
+
+/* --- Bolinha de Desconto (Badge) --- */
+.discount-badge {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    background: linear-gradient(135deg, #ff002b 0%, #ff6b6b 100%);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    box-shadow: 0 4px 15px rgba(255, 0, 43, 0.4);
+    z-index: 10;
+    transform: rotate(-12deg);
+    animation: pulse 2s infinite;
+    border: 2px solid white;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: rotate(-12deg) scale(1);
+    }
+    50% {
+        transform: rotate(-12deg) scale(1.1);
+    }
+}
+
+/* --- Estilos Extras (Tabelas e Formulários Admin) --- */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.admin-table th {
+    background: linear-gradient(135deg, #228B22 0%, #32CD32 100%);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.admin-table tr:hover {
+    background-color: #f8f9fa;
+    transition: background-color 0.2s ease;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #228B22;
+    box-shadow: 0 0 0 3px rgba(34, 139, 34, 0.1);
+}
+
+.container-cadastro {
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+    min-height: calc(100vh - 200px);
+}
+
+/* --- Botão Cadastrar --- */
+.btn-cadastrar {
+    background: linear-gradient(135deg, #228B22 0%, #32CD32 100%);
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(34, 139, 34, 0.4);
+}
+
+.btn-cadastrar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(34, 139, 34, 0.5);
+}
+
+.btn-cadastrar:active {
+    transform: translateY(-1px);
+}
+
+/* --- Card de Cadastro/Login --- */
+.card-cadastro {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    max-width: 420px;
+    width: 100%;
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-cadastro h2 {
+    color: #2c3e50;
+    margin-bottom: 8px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.card-cadastro p {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    .brand-card {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .user-actions {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .account-btn {
+        font-size: 12px;
+        padding: 8px 14px;
+    }
+}

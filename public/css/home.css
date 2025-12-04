@@ -1,0 +1,153 @@
+/* Estilos melhorados para a página home */
+
+/* Mensagem de saudação */
+.user-greeting {
+    color: white;
+    font-weight: 600;
+    font-size: 13px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    backdrop-filter: blur(10px);
+}
+
+/* Botões de ação do usuário */
+.btn-admin {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-admin:hover {
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+}
+
+.btn-admin span {
+    font-size: 12px;
+}
+
+.btn-empresa {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-empresa:hover {
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+}
+
+.btn-empresa span {
+    font-size: 12px;
+}
+
+.btn-meus-cupons {
+    background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
+    color: #2c3e50;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-meus-cupons:hover {
+    background: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%);
+    color: #1a1a1a;
+}
+
+.btn-meus-cupons span {
+    font-size: 12px;
+}
+
+.btn-sair {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-sair:hover {
+    background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+}
+
+.btn-cadastrar-white {
+    background: white;
+    color: #228B22;
+    border: 2px solid white;
+    font-weight: 600;
+}
+
+.btn-cadastrar-white:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: #1e7a1e;
+    transform: translateY(-2px);
+}
+
+/* Seção de ofertas */
+.offers-section {
+    text-align: center;
+    margin: 40px 0 30px;
+    padding: 0 20px;
+}
+
+.offers-section h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #228B22 0%, #32CD32 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.offers-section p {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+/* Mensagem de cupons vazios */
+.empty-cupons {
+    text-align: center;
+    width: 100%;
+    padding: 40px 20px;
+    font-size: 18px;
+    color: #999;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Status de estoque */
+.stock-esgotado {
+    color: #e74c3c;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(231, 76, 60, 0.1);
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.stock-disponivel {
+    color: #27ae60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(39, 174, 96, 0.1);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Botão entrar para pegar */
+.btn-entrar-para-pegar {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.4);
+}
+
+.btn-entrar-para-pegar:hover {
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+    box-shadow: 0 8px 25px rgba(44, 62, 80, 0.5);
+}
