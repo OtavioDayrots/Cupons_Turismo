@@ -29,15 +29,23 @@
             <h2>Crie sua conta</h2>
             <p>Junte-se a nós para economizar!</p>
             
-            <form action="index.php?page=salvar-usuario" method="POST">
+            <form action="index.php?page=salvar-usuario" method="POST" id="formCadastro">
                 <div class="form-group">
-                    <label>Nome Completo</label>
-                    <input type="text" name="nome" placeholder="Seu nome" required>
+                    <label>Tipo de Cadastro</label>
+                    <select name="tipo_cadastro" id="tipoCadastro" required onchange="alternarDocumento()">
+                        <option value="pessoa_fisica">Pessoa Física</option>
+                        <option value="empresa">Empresa</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label>CPF</label>
-                    <input type="number" name="CPF" placeholder="Seu CPF" required>
+                    <label id="labelNome">Nome Completo</label>
+                    <input type="text" name="nome" id="nome" placeholder="Seu nome" required>
+                </div>
+
+                <div class="form-group" id="grupoDocumento">
+                    <label id="labelDocumento">CPF</label>
+                    <input type="text" name="documento" id="documento" placeholder="000.000.000-00" required>
                 </div>
 
                 <div class="form-group">
@@ -47,7 +55,7 @@
 
                 <div class="form-group">
                     <label>Celular</label>
-                    <input type="number" name="celular" placeholder="Seu numero de celular" required>
+                    <input type="text" name="celular" placeholder="(00) 00000-0000" required>
                 </div>
 
                 <div class="form-group">
@@ -59,6 +67,59 @@
             </form>
         </div>
     </div>
+
+    <script>
+        function alternarDocumento() {
+            const tipoCadastro = document.getElementById('tipoCadastro').value;
+            const labelDocumento = document.getElementById('labelDocumento');
+            const inputDocumento = document.getElementById('documento');
+            const labelNome = document.getElementById('labelNome');
+            const inputNome = document.getElementById('nome');
+
+            if (tipoCadastro === 'empresa') {
+                labelDocumento.textContent = 'CNPJ';
+                inputDocumento.placeholder = '00.000.000/0000-00';
+                inputDocumento.setAttribute('maxlength', '18');
+                labelNome.textContent = 'Razão Social';
+                inputNome.placeholder = 'Nome da empresa';
+            } else {
+                labelDocumento.textContent = 'CPF';
+                inputDocumento.placeholder = '000.000.000-00';
+                inputDocumento.setAttribute('maxlength', '14');
+                labelNome.textContent = 'Nome Completo';
+                inputNome.placeholder = 'Seu nome';
+            }
+            inputDocumento.value = '';
+        }
+
+        // Máscara para CPF
+        document.getElementById('documento').addEventListener('input', function(e) {
+            const tipoCadastro = document.getElementById('tipoCadastro').value;
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (tipoCadastro === 'empresa') {
+                // Máscara CNPJ: 00.000.000/0000-00
+                if (value.length <= 14) {
+                    value = value.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2}).*/, '$1.$2.$3/$4-$5');
+                }
+            } else {
+                // Máscara CPF: 000.000.000-00
+                if (value.length <= 11) {
+                    value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2}).*/, '$1.$2.$3-$4');
+                }
+            }
+            e.target.value = value;
+        });
+
+        // Máscara para Celular
+        document.querySelector('input[name="celular"]').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+            }
+            e.target.value = value;
+        });
+    </script>
 
 </body>
 </html>

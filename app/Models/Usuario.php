@@ -4,25 +4,47 @@ require_once 'Database.php';
 class Usuario {
     
     // Cadastrar novo usuário
-    public static function cadastrar($nome, $email, $senha) {
+    public static function cadastrar($nome, $email, $senha, $documento = '', $tipo_cadastro = 'pessoa_fisica', $celular = '', $nivel = 'usuario') {
         $conn = Database::conectar();
 
         // 1. Criptografar a senha (SEGURANÇA É VITAL)
         $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
         // 2. Preparar o comando SQL
-        $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
-        $stmt = $conn->prepare($sql);
-
-        // 3. Executar com os dados
+        // Tenta inserir com todos os campos, se algum campo não existir, tenta sem ele
         try {
+            $sql = "INSERT INTO usuarios (nome, email, senha, nivel, documento, tipo_cadastro, celular) 
+                    VALUES (:nome, :email, :senha, :nivel, :documento, :tipo_cadastro, :celular)";
+            $stmt = $conn->prepare($sql);
             $stmt->execute([
                 ':nome' => $nome,
                 ':email' => $email,
-                ':senha' => $senhaHash
+                ':senha' => $senhaHash,
+                ':nivel' => $nivel,
+                ':documento' => $documento,
+                ':tipo_cadastro' => $tipo_cadastro,
+                ':celular' => $celular
             ]);
             return true;
         } catch (PDOException $e) {
+            // Se der erro por coluna não existir, tenta sem os campos opcionais
+            if (strpos($e->getMessage(), "Unknown column") !== false) {
+                try {
+                    $sql = "INSERT INTO usuarios (nome, email, senha, nivel) 
+                            VALUES (:nome, :email, :senha, :nivel)";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->execute([
+                        ':nome' => $nome,
+                        ':email' => $email,
+                        ':senha' => $senhaHash,
+                        ':nivel' => $nivel
+                    ]);
+                    return true;
+                } catch (PDOException $e2) {
+                    // Se der erro (ex: email já existe)
+                    return false;
+                }
+            }
             // Se der erro (ex: email já existe)
             return false;
         }

@@ -14,11 +14,19 @@ class UserController {
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $senha = $_POST['senha'];
+        $documento = isset($_POST['documento']) ? $_POST['documento'] : '';
+        $tipo_cadastro = isset($_POST['tipo_cadastro']) ? $_POST['tipo_cadastro'] : 'pessoa_fisica';
+        $celular = isset($_POST['celular']) ? $_POST['celular'] : '';
 
-        if (Usuario::cadastrar($nome, $email, $senha)) {
+        // Define o nível baseado no tipo de cadastro
+        $nivel = ($tipo_cadastro === 'empresa') ? 'empresa' : 'usuario';
+
+        if (Usuario::cadastrar($nome, $email, $senha, $documento, $tipo_cadastro, $celular, $nivel)) {
             header('Location: index.php?page=login&msg=sucesso');
+            exit;
         } else {
             header('Location: index.php?page=cadastro&erro=email_existe');
+            exit;
         }
     }
 

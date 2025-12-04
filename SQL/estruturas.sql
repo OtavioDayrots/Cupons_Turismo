@@ -11,6 +11,9 @@ CREATE TABLE IF NOT EXISTS usuarios (
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
     nivel VARCHAR(20) DEFAULT 'usuario',
+    documento VARCHAR(20),
+    tipo_cadastro VARCHAR(20) DEFAULT 'pessoa_fisica',
+    celular VARCHAR(20),
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -46,9 +49,14 @@ CREATE TABLE IF NOT EXISTS resgates (
 );
 
 -- (Opcional) Define que os cupons antigos pertencem ao Admin (ID 1) para não sumirem
-UPDATE cupons SET usuario_id = 1 WHERE usuario_id IS NULL;
+-- UPDATE cupons SET usuario_id = 1 WHERE usuario_id IS NULL;
 
 -- Vamos criar o nível 'empresa' nos usuários.
 -- Crie um usuário novo no site (ex: "Hotel Plaza", email "plaza@hotel.com")
 -- Depois, rode este comando para transformá-lo em empresa:
-UPDATE usuarios SET nivel = 'empresa' WHERE email = 'plaza@hotel.com';
+-- UPDATE usuarios SET nivel = 'empresa' WHERE email = 'plaza@hotel.com';
+
+-- ============================================
+-- ATUALIZAÇÃO: Adicionar campos para CPF/CNPJ
+-- Se a tabela usuarios já existir, execute o arquivo SQL/atualizar_usuarios.sql
+-- ============================================
