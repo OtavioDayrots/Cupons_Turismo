@@ -14,12 +14,12 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <img src="img/cupturimg.png" width="200px" alt="logo">
+                <img src="<?= BASE_URL ?>img/cupturimg.png" width="200px" alt="logo">
             </div>
             <div class="user-actions">
                 <span class="header-user-info">Logado como:
                     <b><?= $_SESSION['usuario_nome'] ?></b></span>
-                <a href="index.php?page=home" class="account-btn">
+                <a href="main.php?page=home" class="account-btn">
                     <i class="fas fa-arrow-left"></i> Voltar para Ofertas
                 </a>
             </div>
@@ -64,7 +64,7 @@
                     <?php else: ?>
                         <div class="empty-cupons-message">
                             <h3>Você ainda não tem cupons 😢</h3>
-                            <a href="index.php?page=home" class="btn-cadastrar">Ver
+                            <a href="main.php?page=home" class="btn-cadastrar">Ver
                                 Ofertas</a>
                         </div>
                     <?php endif; ?>

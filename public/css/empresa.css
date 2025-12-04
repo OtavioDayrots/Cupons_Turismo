@@ -1,25 +1,53 @@
-/* Estilos para a página da empresa */
+/* Estilos melhorados para a página da empresa */
 
 /* Container principal */
 .empresa-container {
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 20px;
+    max-width: 1000px;
+    margin: 25px auto;
+    padding: 25px;
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Header de boas-vindas */
 .welcome-header {
-    background: #2c3e50;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
     color: white;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 8px 25px rgba(44, 62, 80, 0.3);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.welcome-header h2 {
+    color: white;
+    margin-bottom: 6px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.welcome-header p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 15px;
+    margin: 0;
 }
 
 .welcome-header-right {
@@ -27,100 +55,202 @@
 }
 
 .welcome-header-count {
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 36px;
+    font-weight: 800;
+    color: #f1c40f;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: block;
+    line-height: 1;
+}
+
+.welcome-header-right div:last-child {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: 500;
 }
 
 /* Tabela da empresa */
 .table-empresa {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 25px;
     border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .table-empresa th {
     text-align: left;
-    border-bottom: 2px solid #eee;
-    padding: 10px;
-    color: #666;
+    border-bottom: 2px solid #e0e0e0;
+    padding: 15px;
+    color: #2c3e50;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
 .table-empresa td {
-    border-bottom: 1px solid #eee;
-    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 15px;
+    transition: background-color 0.2s ease;
+}
+
+.table-empresa tr:hover td {
+    background-color: #f8f9fa;
+}
+
+.table-empresa tr:last-child td {
+    border-bottom: none;
 }
 
 /* Área de criação */
 .create-offer-area {
-    background: #f8f9fa;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     padding: 20px;
-    border-radius: 10px;
-    border: 1px dashed #ccc;
+    border-radius: 12px;
+    border: 2px dashed #228B22;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.create-offer-area:hover {
+    border-color: #32CD32;
+    box-shadow: 0 4px 15px rgba(34, 139, 34, 0.1);
 }
 
 .create-offer-title {
     margin-bottom: 15px;
     color: #228B22;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.create-offer-title i {
+    font-size: 24px;
 }
 
 .create-offer-form {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.create-offer-form input[type="text"],
+.create-offer-form input[type="number"] {
+    padding: 10px 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: white;
+    font-family: inherit;
+}
+
+.create-offer-form input[type="text"]:focus,
+.create-offer-form input[type="number"]:focus {
+    outline: none;
+    border-color: #228B22;
+    box-shadow: 0 0 0 3px rgba(34, 139, 34, 0.1);
+    transform: translateY(-2px);
 }
 
 .create-offer-form input[type="text"] {
     flex: 2;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    min-width: 200px;
 }
 
 .create-offer-form input[type="number"] {
-    width: 80px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    width: 100px;
 }
 
 .create-offer-form input[type="text"]:nth-of-type(3) {
     flex: 1;
+    min-width: 150px;
 }
 
 .create-offer-form input[type="text"]:nth-of-type(4) {
-    width: 100px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    width: 120px;
 }
 
 .create-offer-form button {
     margin: 0;
     width: auto;
-    padding: 0 30px;
+    padding: 10px 25px;
+    flex-shrink: 0;
 }
 
 /* Título de ofertas */
 .my-offers-title {
     margin-top: 30px;
-    color: #333;
+    color: #2c3e50;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
 }
 
 /* Tabela vazia */
 .table-empty {
     text-align: center;
-    padding: 20px;
+    padding: 40px 20px;
+    color: #999;
+    font-size: 16px;
 }
 
 /* Imagem na tabela */
 .table-img {
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.table-img:hover {
+    transform: scale(1.1);
 }
 
 /* Link de deletar */
 .delete-link {
-    color: red;
+    color: #e74c3c;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
+.delete-link:hover {
+    background: rgba(231, 76, 60, 0.1);
+    color: #c0392b;
+    transform: translateX(2px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .welcome-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .welcome-header-right {
+        text-align: center;
+    }
+    
+    .create-offer-form {
+        flex-direction: column;
+    }
+    
+    .create-offer-form input,
+    .create-offer-form button {
+        width: 100% !important;
+    }
+}

@@ -8,7 +8,7 @@
 <body>
     <div class="container-editar">
         <h2>Editar Usuário</h2>
-        <form action="index.php?page=admin-user-update" method="POST">
+        <form action="main.php?page=admin-user-update" method="POST">
             <input type="hidden" name="id" value="<?= $usuario->id ?>">
 
             <div class="form-group">
@@ -30,7 +30,7 @@
             </div>
 
             <button type="submit" class="btn-cadastrar">Salvar Alterações</button>
-            <a href="index.php?page=admin-users" class="cancel-link">Cancelar</a>
+            <a href="main.php?page=admin-users" class="cancel-link">Cancelar</a>
         </form>
     </div>
 </body>

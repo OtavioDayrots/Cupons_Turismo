@@ -13,8 +13,8 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <a href="index.php?page=home">
-                    <img src="img/cupturimg.png" alt="Cuponeria Logo">
+                <a href="main.php?page=home">
+                    <img src="<?= BASE_URL ?>img/cupturimg.png" alt="Cuponeria Logo">
                 </a>
             </div>
 
@@ -30,36 +30,36 @@
 
                     <!-- Botão ADMIN -->
                     <?php if (isset($_SESSION['usuario_nivel']) && $_SESSION['usuario_nivel'] == 'admin'): ?>
-                        <a href="index.php?page=admin" class="account-btn btn-admin">
+                        <a href="main.php?page=admin" class="account-btn btn-admin">
                             <i class="fas fa-cog"></i> <span>Admin</span>
                         </a>
                     <?php endif; ?>
 
                     <!-- Botão EMPRESA -->
                     <?php if (isset($_SESSION['usuario_nivel']) && $_SESSION['usuario_nivel'] == 'empresa'): ?>
-                        <a href="index.php?page=empresa-painel" class="account-btn btn-empresa">
+                        <a href="main.php?page=empresa-painel" class="account-btn btn-empresa">
                             <i class="fas fa-store"></i> <span>Empresa</span>
                         </a>
                     <?php endif; ?>
 
                     <!-- Botão MEUS CUPONS -->
-                    <a href="index.php?page=meus-cupons" class="account-btn btn-meus-cupons">
+                    <a href="main.php?page=meus-cupons" class="account-btn btn-meus-cupons">
                         <i class="fas fa-ticket-alt"></i> <span>Meus Cupons</span>
                     </a>
 
                     <!-- Botão SAIR -->
-                    <a href="index.php?page=logout" class="account-btn btn-sair">
+                    <a href="main.php?page=logout" class="account-btn btn-sair">
                         <i class="fas fa-sign-out-alt"></i>
                     </a>
 
                 <?php else: ?>
                     <!-- NÃO LOGADO -->
                     
-                    <a href="index.php?page=login" class="account-btn">
+                    <a href="main.php?page=login" class="account-btn">
                         <i class="fas fa-sign-in-alt"></i> Entrar
                     </a>
 
-                    <a href="index.php?page=cadastro" class="account-btn btn-cadastrar-white">
+                    <a href="main.php?page=cadastro" class="account-btn btn-cadastrar-white">
                         Cadastrar
                     </a>
 
@@ -115,11 +115,11 @@
                         <?php if ($cupom->quantidade > 0): ?>
                             
                             <?php if(isset($_SESSION['usuario_id'])): ?>
-                                <a href="index.php?page=resgatar&id=<?= $cupom->id ?>" class="btn-chrome">
+                                <a href="main.php?page=resgatar&id=<?= $cupom->id ?>" class="btn-chrome">
                                     Pegar Cupom
                                 </a>
                             <?php else: ?>
-                                <a href="index.php?page=login" class="btn-chrome btn-entrar-para-pegar">
+                                <a href="main.php?page=login" class="btn-chrome btn-entrar-para-pegar">
                                     Entre para Pegar
                                 </a>
                             <?php endif; ?>

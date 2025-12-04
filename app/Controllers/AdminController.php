@@ -7,7 +7,7 @@ class AdminController {
     private function verificarAcesso() {
         // Se não tá logado OU se o nível não é admin, chuta pra fora
         if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_nivel'] !== 'admin') {
-            header('Location: index.php?page=home');
+            header('Location: main.php?page=home');
             exit;
         }
     }
@@ -31,7 +31,7 @@ class AdminController {
         // Passa o desconto para o model
         Cupom::criar($nome, $imagem, $quantidade, $_SESSION['usuario_id'], $desconto);
         
-        header('Location: index.php?page=admin');
+        header('Location: main.php?page=admin');
     }
 
     // Deleta um cupom
@@ -42,7 +42,7 @@ class AdminController {
             Cupom::deletar($_GET['id']);
         }
         
-        header('Location: index.php?page=admin');
+        header('Location: main.php?page=admin');
     }
 
     // Tela de Edição
@@ -54,7 +54,7 @@ class AdminController {
             $cupom = Cupom::buscarPorId($_GET['id']);
             require_once __DIR__ . '/../Views/admin_editar.php';
         } else {
-            header('Location: index.php?page=admin');
+            header('Location: main.php?page=admin');
         }
     }
 
@@ -70,7 +70,7 @@ class AdminController {
 
         Cupom::atualizar($id, $nome, $imagem, $quantidade, $desconto);
         
-        header('Location: index.php?page=admin');
+        header('Location: main.php?page=admin');
     }
 
     // --- GESTÃO DE USUÁRIOS ---
@@ -101,7 +101,7 @@ class AdminController {
         $nivel = $_POST['nivel']; // Aqui definimos se é admin ou usuario
 
         Usuario::atualizar($id, $nome, $email, $nivel);
-        header('Location: index.php?page=admin-users');
+        header('Location: main.php?page=admin-users');
     }
 
     // Deletar Usuário
@@ -117,6 +117,6 @@ class AdminController {
         }
 
         Usuario::deletar($id);
-        header('Location: index.php?page=admin-users');
+        header('Location: main.php?page=admin-users');
     }
 }

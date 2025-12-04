@@ -1,166 +1,302 @@
-/* Estilos para páginas administrativas */
+/* Estilos melhorados para páginas administrativas */
 
 /* Container de edição */
 .container-editar {
-    max-width: 600px;
-    margin: 50px auto;
+    max-width: 550px;
+    margin: 40px auto;
     padding: 30px;
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.5s ease;
 }
 
 /* Formulários */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 13px;
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 10px 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: white;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #228B22;
+    box-shadow: 0 0 0 3px rgba(34, 139, 34, 0.1);
+    transform: translateY(-2px);
 }
 
 /* Container administrativo */
 .admin-container {
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 20px;
+    max-width: 1000px;
+    margin: 25px auto;
+    padding: 25px;
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.5s ease;
 }
 
 /* Tabelas administrativas */
 .admin-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 25px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .admin-table th,
 .admin-table td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
     text-align: left;
+}
+
+.admin-table th {
+    background: linear-gradient(135deg, #228B22 0%, #32CD32 100%);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.admin-table tr {
+    transition: background-color 0.2s ease;
+}
+
+.admin-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
 }
 
 /* Botões de ação */
 .btn-delete {
-    color: red;
+    color: #e74c3c;
     cursor: pointer;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-delete:hover {
+    background: rgba(231, 76, 60, 0.1);
+    color: #c0392b;
+    transform: translateX(2px);
 }
 
 /* Form rows */
 .form-row {
     display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
 }
 
 .form-row input {
     flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    min-width: 150px;
+    padding: 10px 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.form-row input:focus {
+    outline: none;
+    border-color: #228B22;
+    box-shadow: 0 0 0 3px rgba(34, 139, 34, 0.1);
 }
 
 /* Badges */
 .badge-admin {
-    background: #333;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
     color: white;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 10px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .badge-user {
-    background: #228B22;
+    background: linear-gradient(135deg, #228B22 0%, #32CD32 100%);
     color: white;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 10px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(34, 139, 34, 0.3);
 }
 
 /* Títulos */
 h2 {
-    color: #228B22;
+    color: #2c3e50;
     margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+h3, h4 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
 /* Botões de ação inline */
 .action-link {
-    color: blue;
-    margin-right: 10px;
+    color: #3498db;
+    margin-right: 15px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.action-link:hover {
+    background: rgba(52, 152, 219, 0.1);
+    color: #2980b9;
+    transform: translateX(2px);
 }
 
 .action-link-red {
-    color: red;
+    color: #e74c3c;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.action-link-red:hover {
+    background: rgba(231, 76, 60, 0.1);
+    color: #c0392b;
+    transform: translateX(2px);
 }
 
 /* Botão cancelar */
 .cancel-link {
     display: block;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 15px;
     color: #666;
     text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.cancel-link:hover {
+    color: #228B22;
 }
 
 /* Imagens arredondadas */
 .rounded-img {
     border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.rounded-img:hover {
+    transform: scale(1.1);
 }
 
 /* Container de botões */
 .button-container {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 15px;
+    margin-top: 25px;
+    flex-wrap: wrap;
 }
 
 .button-container .btn-cadastrar {
     margin: 0;
+    flex: 1;
+    min-width: 150px;
 }
 
 .button-container a.btn-cadastrar {
-    background: #ccc;
+    background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
     text-decoration: none;
     text-align: center;
 }
 
+.button-container a.btn-cadastrar:hover {
+    background: linear-gradient(135deg, #7f8c8d 0%, #95a5a6 100%);
+}
+
 /* Área de formulário admin */
 .admin-form-area {
-    background: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 30px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border: 2px solid #e0e0e0;
+}
+
+.admin-form-area h4 {
+    color: #228B22;
+    margin-bottom: 15px;
+    font-size: 18px;
 }
 
 /* Botão salvar inline */
 .btn-save-inline {
     width: auto;
     margin: 0;
+    padding: 12px 30px;
 }
 
 /* Botão admin users */
 .btn-admin-users {
-    background: #2c3e50;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
     color: white;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-admin-users:hover {
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
 }
 
 /* Container com margem */
@@ -170,6 +306,10 @@ h2 {
 
 /* Botão gerenciar cupons */
 .btn-gerenciar-cupons {
-    background: #666;
+    background: linear-gradient(135deg, #7f8c8d 0%, #95a5a6 100%);
+    border: 2px solid rgba(255, 255, 255, 0.4);
 }
 
+.btn-gerenciar-cupons:hover {
+    background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+}

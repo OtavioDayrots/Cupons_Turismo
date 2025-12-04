@@ -16,9 +16,9 @@ class UserController {
         $senha = $_POST['senha'];
 
         if (Usuario::cadastrar($nome, $email, $senha)) {
-            header('Location: index.php?page=login&msg=sucesso');
+            header('Location: main.php?page=login&msg=sucesso');
         } else {
-            header('Location: index.php?page=cadastro&erro=email_existe');
+            header('Location: main.php?page=cadastro&erro=email_existe');
         }
     }
 
@@ -41,7 +41,7 @@ class UserController {
             $_SESSION['usuario_email'] = $usuario['email'];
             $_SESSION['usuario_nivel'] = $usuario['nivel']; 
 
-            header('Location: index.php?page=home');
+            header('Location: main.php?page=home');
             exit;
         } else {
             echo "<script>alert('E-mail ou senha incorretos!'); window.history.back();</script>";
@@ -50,7 +50,7 @@ class UserController {
 
     public function logout() {
         session_destroy();
-        header('Location: index.php?page=home');
+        header('Location: main.php?page=home');
         exit;
     }
 
@@ -59,7 +59,7 @@ class UserController {
     public function resgatar() {
         // 1. Verifica login
         if (!isset($_SESSION['usuario_id'])) {
-            header('Location: index.php?page=login');
+            header('Location: main.php?page=login');
             exit;
         }
 
@@ -72,13 +72,13 @@ class UserController {
         $cupom = Cupom::buscarPorId($cupom_id);
 
         if ($cupom->quantidade <= 0) {
-            echo "<script>alert('Poxa! Esse cupom acabou de esgotar.'); window.location='index.php?page=home';</script>";
+            echo "<script>alert('Poxa! Esse cupom acabou de esgotar.'); window.location='main.php?page=home';</script>";
             exit;
         }
 
         // 2. Verifica se já pegou (opcional)
         if (Resgate::jaResgatou($usuario_id, $cupom_id)) {
-            echo "<script>alert('Você já pegou esse cupom!'); window.location='index.php?page=meus-cupons';</script>";
+            echo "<script>alert('Você já pegou esse cupom!'); window.location='main.php?page=meus-cupons';</script>";
             exit;
         }
 
@@ -91,7 +91,7 @@ class UserController {
             Cupom::decrementarEstoque($cupom_id);
 
             // Sucesso
-            header('Location: index.php?page=meus-cupons');
+            header('Location: main.php?page=meus-cupons');
         } else {
             echo "Erro ao resgatar.";
         }
@@ -100,7 +100,7 @@ class UserController {
     public function painel() {
         // Verifica se está logado
         if (!isset($_SESSION['usuario_id'])) {
-            header('Location: index.php?page=login');
+            header('Location: main.php?page=login');
             exit;
         }
         

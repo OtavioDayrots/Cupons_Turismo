@@ -12,8 +12,8 @@
         <div class="header-container">
             <div class="logo">Admin Usuários</div>
             <div class="user-actions">
-                <a href="index.php?page=admin" class="account-btn btn-gerenciar-cupons">Gerenciar Cupons</a>
-                <a href="index.php?page=home" class="account-btn">Voltar ao Site</a>
+                <a href="main.php?page=admin" class="account-btn btn-gerenciar-cupons">Gerenciar Cupons</a>
+                <a href="main.php?page=home" class="account-btn">Voltar ao Site</a>
             </div>
         </div>
     </header>
@@ -45,9 +45,9 @@
                         <?php endif; ?>
                     </td>
                     <td>
-                        <a href="index.php?page=admin-user-edit&id=<?= $u->id ?>" class="action-link"><i class="fas fa-edit"></i></a>
+                        <a href="main.php?page=admin-user-edit&id=<?= $u->id ?>" class="action-link"><i class="fas fa-edit"></i></a>
                         
-                        <a href="index.php?page=admin-user-delete&id=<?= $u->id ?>" 
+                        <a href="main.php?page=admin-user-delete&id=<?= $u->id ?>" 
                            class="action-link-red" 
                            onclick="return confirm('Tem certeza? Isso não pode ser desfeito.')">
                            <i class="fas fa-trash"></i>

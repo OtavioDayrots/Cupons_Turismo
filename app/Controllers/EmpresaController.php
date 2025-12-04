@@ -7,7 +7,7 @@ class EmpresaController {
     private function verificarAcesso() {
         if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_nivel'] !== 'empresa') {
             // Se não for empresa, manda pra home
-            header('Location: index.php?page=home');
+            header('Location: main.php?page=home');
             exit;
         }
     }
@@ -33,7 +33,7 @@ class EmpresaController {
         // Passa o desconto para o model
         Cupom::criar($nome, $imagem, $quantidade, $usuario_id, $desconto);
         
-        header('Location: index.php?page=empresa-painel');
+        header('Location: main.php?page=empresa-painel');
     }
 
     // Deletar cupom da empresa
@@ -46,7 +46,7 @@ class EmpresaController {
             Cupom::deletar($_GET['id']);
         }
         
-        header('Location: index.php?page=empresa-painel');
+        header('Location: main.php?page=empresa-painel');
     }
 }
 ?>
