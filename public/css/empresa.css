@@ -1,0 +1,126 @@
+/* Estilos para a página da empresa */
+
+/* Container principal */
+.empresa-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Header de boas-vindas */
+.welcome-header {
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.welcome-header-right {
+    text-align: right;
+}
+
+.welcome-header-count {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Tabela da empresa */
+.table-empresa {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.table-empresa th {
+    text-align: left;
+    border-bottom: 2px solid #eee;
+    padding: 10px;
+    color: #666;
+}
+
+.table-empresa td {
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+}
+
+/* Área de criação */
+.create-offer-area {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px dashed #ccc;
+}
+
+.create-offer-title {
+    margin-bottom: 15px;
+    color: #228B22;
+}
+
+.create-offer-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.create-offer-form input[type="text"] {
+    flex: 2;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.create-offer-form input[type="number"] {
+    width: 80px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.create-offer-form input[type="text"]:nth-of-type(3) {
+    flex: 1;
+}
+
+.create-offer-form input[type="text"]:nth-of-type(4) {
+    width: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.create-offer-form button {
+    margin: 0;
+    width: auto;
+    padding: 0 30px;
+}
+
+/* Título de ofertas */
+.my-offers-title {
+    margin-top: 30px;
+    color: #333;
+}
+
+/* Tabela vazia */
+.table-empty {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Imagem na tabela */
+.table-img {
+    border-radius: 5px;
+}
+
+/* Link de deletar */
+.delete-link {
+    color: red;
+    text-decoration: none;
+    font-weight: bold;
+}
+

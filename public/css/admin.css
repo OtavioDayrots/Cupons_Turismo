@@ -1,0 +1,175 @@
+/* Estilos para páginas administrativas */
+
+/* Container de edição */
+.container-editar {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulários */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Container administrativo */
+.admin-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tabelas administrativas */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Botões de ação */
+.btn-delete {
+    color: red;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Form rows */
+.form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.form-row input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Badges */
+.badge-admin {
+    background: #333;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+}
+
+.badge-user {
+    background: #228B22;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+}
+
+/* Títulos */
+h2 {
+    color: #228B22;
+    margin-bottom: 20px;
+}
+
+/* Botões de ação inline */
+.action-link {
+    color: blue;
+    margin-right: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.action-link-red {
+    color: red;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Botão cancelar */
+.cancel-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #666;
+    text-decoration: none;
+}
+
+/* Imagens arredondadas */
+.rounded-img {
+    border-radius: 50%;
+}
+
+/* Container de botões */
+.button-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button-container .btn-cadastrar {
+    margin: 0;
+}
+
+.button-container a.btn-cadastrar {
+    background: #ccc;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Área de formulário admin */
+.admin-form-area {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+/* Botão salvar inline */
+.btn-save-inline {
+    width: auto;
+    margin: 0;
+}
+
+/* Botão admin users */
+.btn-admin-users {
+    background: #2c3e50;
+    color: white;
+}
+
+/* Container com margem */
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+/* Botão gerenciar cupons */
+.btn-gerenciar-cupons {
+    background: #666;
+}
+

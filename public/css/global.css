@@ -1,0 +1,9 @@
+/* Arquivo CSS Global - Importa todos os outros arquivos CSS */
+
+@import url('style.css');
+@import url('admin.css');
+@import url('home.css');
+@import url('meus_cupons.css');
+@import url('empresa.css');
+@import url('auth.css');
+

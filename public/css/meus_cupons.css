@@ -1,0 +1,89 @@
+/* Estilos para a página Meus Cupons */
+
+/* Header info */
+.header-user-info {
+    color: white;
+    margin-right: 15px;
+}
+
+/* Container principal */
+.meus-cupons-container {
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Título */
+.meus-cupons-title {
+    color: #228B22;
+    margin-bottom: 20px;
+}
+
+/* Grid centralizado */
+.brands-grid-centered {
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Card de cupom resgatado */
+.cupom-resgatado-card {
+    border: 2px solid #228B22;
+    width: 250px;
+}
+
+/* Badge de data de resgate */
+.resgate-badge {
+    background: #228B22;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+/* Imagem arredondada */
+.cupom-img-rounded {
+    border-radius: 50%;
+}
+
+/* Nome do hotel */
+.cupom-hotel-name {
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+/* Desconto destacado */
+.cupom-desconto {
+    color: #ff002b;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+/* Código único */
+.cupom-codigo {
+    font-weight: 800;
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333;
+}
+
+/* QR Code */
+.cupom-qrcode {
+    margin-bottom: 10px;
+}
+
+/* Mensagem de instrução */
+.cupom-instruction {
+    font-size: 11px;
+    color: #666;
+}
+
+/* Mensagem vazia */
+.empty-cupons-message {
+    text-align: center;
+    padding: 40px;
+}
+
+.empty-cupons-message a {
+    text-decoration: none;
+}
+

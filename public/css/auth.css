@@ -1,0 +1,20 @@
+/* Estilos para páginas de autenticação (login e cadastro) */
+
+/* Link de cadastro no login */
+.auth-link {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.auth-link a {
+    color: #228B22;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Link do logo */
+.logo-link {
+    text-decoration: none;
+    color: white;
+}
+
