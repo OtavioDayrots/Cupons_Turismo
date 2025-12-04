@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../Models/Usuario.php';
-require_once __DIR__ . '/../Models/Resgate.php'; // Importante para o QR Code funcionar
+require_once __DIR__ . '/../Models/Resgate.php'; 
+require_once __DIR__ . '/../Models/Cupom.php'; // Adicionado para garantir o check de estoque
 
 class UserController {
 
@@ -66,34 +67,32 @@ class UserController {
         $usuario_id = $_SESSION['usuario_id'];
         $cupom_id = $_GET['id'];
 
-        // --- NOVO: VERIFICA ESTOQUE ANTES DE TUDO ---
-        // Precisamos buscar o cupom para ver a quantidade atual
-        require_once __DIR__ . '/../Models/Cupom.php'; // Garante que o Model Cupom está carregado
+        // 2. VERIFICA ESTOQUE ANTES DE TUDO
         $cupom = Cupom::buscarPorId($cupom_id);
 
-        if ($cupom->quantidade <= 0) {
+        if (!$cupom || $cupom->quantidade <= 0) { // Adicionada a checagem se o cupom existe
             echo "<script>alert('Poxa! Esse cupom acabou de esgotar.'); window.location='index.php?page=home';</script>";
             exit;
         }
 
-        // 2. Verifica se já pegou (opcional)
+        // 3. Verifica se já pegou (opcional, evita flood)
         if (Resgate::jaResgatou($usuario_id, $cupom_id)) {
             echo "<script>alert('Você já pegou esse cupom!'); window.location='index.php?page=meus-cupons';</script>";
             exit;
         }
 
-        // 3. Gera código e Salva o Resgate
+        // 4. Gera código e Salva o Resgate
         $codigo = "#CUP-" . strtoupper(substr(md5(uniqid()), 0, 5));
         
         if (Resgate::salvar($usuario_id, $cupom_id, $codigo)) {
             
-            // --- NOVO: DIMINUI O ESTOQUE AGORA ---
+            // 5. DIMINUI O ESTOQUE
             Cupom::decrementarEstoque($cupom_id);
 
             // Sucesso
             header('Location: index.php?page=meus-cupons');
         } else {
-            echo "Erro ao resgatar.";
+            echo "Erro ao resgatar. Tente novamente.";
         }
     }
 
@@ -110,3 +109,4 @@ class UserController {
         require_once __DIR__ . '/../Views/meus_cupons.php';
     }
 }
+?>

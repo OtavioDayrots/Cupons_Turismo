@@ -84,3 +84,4 @@ class Usuario {
         return $stmt->execute([':id' => $id]);
     }
 }
+?>

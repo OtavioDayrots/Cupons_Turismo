@@ -26,7 +26,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-    flex-wrap: wrap; /* Permite quebrar linha em mobile */
+    flex-wrap: wrap; 
     gap: 15px;
 }
 
@@ -60,7 +60,7 @@ header {
 }
 
 /* --- Botão Principal (Pegar Cupom) --- */
-.btn-chrome {
+.btn-chrome, .btn-cadastrar { /* Adicionei .btn-cadastrar aqui */
     background-color: #00c634;
     color: white;
     border: none;
@@ -74,14 +74,15 @@ header {
     transition: transform 0.2s, background 0.2s;
     text-align: center;
     display: block;
+    text-decoration: none; /* Adicionado para ser usado em links/botões */
 }
 
-.btn-chrome:hover {
+.btn-chrome:hover, .btn-cadastrar:hover {
     transform: scale(1.02);
     background-color: #00a82d;
 }
 
-.btn-chrome:disabled {
+.btn-chrome:disabled, .btn-cadastrar:disabled {
     background-color: #ccc;
     cursor: not-allowed;
     transform: none;
@@ -96,9 +97,9 @@ header {
 
 .brands-grid {
     display: flex;
-    flex-wrap: wrap; /* Permite cards irem para linha de baixo */
-    gap: 25px;       /* Espaço entre os cards */
-    justify-content: center; /* Centraliza na tela */
+    flex-wrap: wrap; 
+    gap: 25px;       
+    justify-content: center; 
 }
 
 /* --- O CARD --- */
@@ -118,19 +119,19 @@ header {
     align-items: center;
     
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    position: relative; /* Importante para a bolinha funcionar */
+    position: relative; 
     transition: transform 0.2s;
 }
 
 .brand-card:hover {
-    transform: translateY(-5px); /* Efeito leve ao passar o mouse */
+    transform: translateY(-5px); 
 }
 
 /* --- Imagem dentro do Card --- */
 .brand-card img {
     width: 100%;
     height: 140px;
-    object-fit: contain; /* Garante que a imagem não estique */
+    object-fit: contain; 
     margin-bottom: 15px;
     border-radius: 8px;
 }
@@ -156,7 +157,7 @@ header {
 
 /* --- Bolinha de Desconto (Badge) --- */
 .discount-badge {
-    position: absolute; /* Flutua sobre o card */
+    position: absolute; 
     top: -10px;
     left: -10px;
     background: #ff002b;
@@ -171,7 +172,7 @@ header {
     font-weight: 800;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     z-index: 10;
-    transform: rotate(-10deg); /* Um charme visual */
+    transform: rotate(-10deg); 
 }
 
 /* --- Estilos Extras (Tabelas e Formulários Admin) --- */
@@ -179,3 +180,8 @@ header {
 .admin-table th, .admin-table td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
 .form-group input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
 .container-cadastro { display: flex; justify-content: center; padding: 40px 20px; }
+.card-cadastro { width: 100%; max-width: 400px; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; } /* Adicionei o estilo do card de cadastro */
+.card-cadastro h2 { color: #228B22; margin-bottom: 10px; }
+.card-cadastro p { margin-bottom: 20px; color: #666; }
+.form-group { text-align: left; margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px; }

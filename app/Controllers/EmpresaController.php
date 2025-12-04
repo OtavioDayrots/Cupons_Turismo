@@ -5,8 +5,8 @@ class EmpresaController {
 
     // Segurança: Só entra se for nível 'empresa'
     private function verificarAcesso() {
-        if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_nivel'] !== 'empresa') {
-            // Se não for empresa, manda pra home
+        if (!isset($_SESSION['usuario_id']) || ($_SESSION['usuario_nivel'] !== 'empresa' && $_SESSION['usuario_nivel'] !== 'admin')) {
+            // Se não for empresa (ou admin, que pode gerenciar tudo), manda pra home
             header('Location: index.php?page=home');
             exit;
         }
@@ -26,12 +26,13 @@ class EmpresaController {
         
         $nome = $_POST['nome'];
         $imagem = $_POST['imagem'];
-        $quantidade = $_POST['quantidade'];
-        $desconto = $_POST['desconto']; // <--- Pega do form
+        $quantidade = (int)$_POST['quantidade'];
+        $desconto = $_POST['desconto']; 
         $usuario_id = $_SESSION['usuario_id'];
 
-        // Passa o desconto para o model
-        Cupom::criar($nome, $imagem, $quantidade, $usuario_id, $desconto);
+        if ($quantidade > 0 && !empty($nome)) {
+            Cupom::criar($nome, $imagem, $quantidade, $usuario_id, $desconto);
+        }
         
         header('Location: index.php?page=empresa-painel');
     }
@@ -40,9 +41,8 @@ class EmpresaController {
     public function delete() {
         $this->verificarAcesso();
         
-        // Aqui seria ideal verificar se o cupom pertence mesmo à empresa antes de deletar
-        // Mas para simplificar o tutorial, vamos confiar no ID por enquanto
         if (isset($_GET['id'])) {
+            // Idealmente, você buscaria o cupom para ter certeza que é do usuario_id logado antes de deletar
             Cupom::deletar($_GET['id']);
         }
         

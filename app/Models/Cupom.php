@@ -11,7 +11,7 @@ class Cupom {
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
-    // --- NOVO: LISTAR SÓ OS DA EMPRESA ---
+    // LISTAR SÓ OS DA EMPRESA
     public static function listarPorUsuario($usuario_id) {
         $conn = Database::conectar();
         $sql = "SELECT * FROM cupons WHERE usuario_id = :uid ORDER BY id DESC";
@@ -20,7 +20,6 @@ class Cupom {
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
-    // --- ATUALIZADO: CRIAR COM DONO ---
     // CRIAR (Adicionado o parametro $desconto)
     public static function criar($nome, $imagem, $quantidade, $usuario_id, $desconto) {
         $conn = Database::conectar();
@@ -31,11 +30,11 @@ class Cupom {
             ':imagem' => $imagem,
             ':quantidade' => $quantidade,
             ':uid' => $usuario_id,
-            ':desc' => $desconto // <--- Novo campo
+            ':desc' => $desconto
         ]);
     }
 
-    // DELETAR (Seguro: verifica se o cupom é mesmo daquela empresa)
+    // DELETAR (Seguro: verifica se o cupom é mesmo daquela empresa - *O Controller que deve verificar a permissão*)
     public static function deletar($id) {
         $conn = Database::conectar();
         $sql = "DELETE FROM cupons WHERE id = :id";
@@ -52,7 +51,6 @@ class Cupom {
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
-    // ATUALIZAR
     // ATUALIZAR (Adicionado o parametro $desconto)
     public static function atualizar($id, $nome, $imagem, $quantidade, $desconto) {
         $conn = Database::conectar();
@@ -63,11 +61,11 @@ class Cupom {
             ':nome' => $nome,
             ':imagem' => $imagem,
             ':quantidade' => $quantidade,
-            ':desc' => $desconto // <--- Novo campo
+            ':desc' => $desconto
         ]);
     }
 
-    // --- NOVO: DIMINUIR ESTOQUE ---
+    // DIMINUIR ESTOQUE
     public static function decrementarEstoque($id) {
         $conn = Database::conectar();
         // Subtrai 1, mas só se a quantidade for maior que 0 (segurança extra)

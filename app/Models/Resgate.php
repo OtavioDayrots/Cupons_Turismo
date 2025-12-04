@@ -21,8 +21,8 @@ class Resgate
     public static function listarPorUsuario($usuario_id)
     {
         $conn = Database::conectar();
-        // Aqui fazemos um JOIN para pegar o Nome e a Imagem do cupom original
-        $sql = "SELECT r.*, c.nome as nome_hotel, c.imagem 
+        // CORREÇÃO: Incluindo c.desconto para exibir na página "Meus Cupons"
+        $sql = "SELECT r.*, c.nome as nome_hotel, c.imagem, c.desconto 
                 FROM resgates r 
                 JOIN cupons c ON r.cupom_id = c.id 
                 WHERE r.usuario_id = :uid 
@@ -42,3 +42,4 @@ class Resgate
         return $stmt->fetch();
     }
 }
+?>

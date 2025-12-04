@@ -14,7 +14,7 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <img src="img/cupturimg.png" width="200px" alt="logo">
+                <img src="<?= BASE_URL ?>img/cupturimg.png" width="200px" alt="logo">
             </div>
             <div class="user-actions">
                 <span style="color: white; margin-right: 15px;">Logado como:
@@ -44,18 +44,18 @@
                                     RESGATADO EM <?= date('d/m/Y', strtotime($item->data_resgate)) ?>
                                 </div>
 
-                                <img src="<?= $item->imagem ?>" alt="Hotel" width="100px" style="border-radius:50%;">
+                                <img src="<?= BASE_URL . $item->imagem ?>" alt="Hotel" width="100px" style="border-radius:50%;">
                                 <div class="brand-info" style="margin-top:5px; font-weight:bold;"><?= $item->nome_hotel ?></div>
 
                                 <div style="color: #ff002b; font-weight: bold; font-size: 24px;">
-                                    <?= isset($item->desconto) ? $item->desconto : 'Promo' ?> OFF
+                                    <?= $item->desconto ?> OFF 
                                 </div>
 
                                 <div style="font-weight: 800; font-size: 18px; margin: 10px 0; color: #333;">
                                     <?= $item->codigo_unico ?>
                                 </div>
 
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?= $item->codigo_unico ?>"
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?= urlencode($item->codigo_unico) ?>"
                                     alt="QR Code" width="120px" style="margin-bottom: 10px;">
 
                                 <div style="font-size: 11px; color: #666;">Apresente este código no local</div>

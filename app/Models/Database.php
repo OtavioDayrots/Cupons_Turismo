@@ -2,7 +2,7 @@
 
 class Database {
     private static $host = 'localhost';
-    private static $db_name = 'cupons-turismo';
+    private static $db_name = 'cupons-turismo'; // NOVO NOME DO BANCO
     private static $username = 'root'; // Padrão do XAMPP
     private static $password = '';     // Padrão do XAMPP é senha vazia
     public static $conn;
@@ -19,6 +19,8 @@ class Database {
                 self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch(PDOException $e) {
                 echo "Erro na conexão: " . $e->getMessage();
+                // É melhor parar a execução do que continuar sem DB
+                exit(); 
             }
         }
         return self::$conn;
